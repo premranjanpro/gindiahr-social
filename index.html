@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GINDiA Social Hub | Instagram | YouTube | Facebook | Usha Singh | Kairvy Trayaksh</title>
+    <meta name="description" content="Official social media hub of GINDiA Group. Follow GIndiaHR, GIndia Tech, Kairvy Trayaksh on Instagram, YouTube and Facebook. Patna, Bihar. Contact: +91 6202254762" />
+    <meta name="keywords" content="gindiahr social media, usha singh instagram, kairvy trayaksh instagram, kairvy singh blog, gindia youtube, gindia facebook, GIndiaHR Patna social, kairvy trayaksh blog viral, gindiahr instagram, patna hr social media" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://social.gindiahr.com/" />
+
+    <!-- Open Graph / Social sharing -->
+    <meta property="og:title" content="GINDiA Social Hub — Follow Us on Instagram, YouTube & Facebook" />
+    <meta property="og:description" content="All GINDiA social channels in one place. Kairvy Trayaksh lifestyle blog, GIndiaHR updates, Tech tips and more!" />
+    <meta property="og:url" content="https://social.gindiahr.com/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GINDiA Social Hub" />
+    <meta name="twitter:description" content="Follow GINDiA Group on Instagram, YouTube, Facebook." />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "name": "GINDiA Social Hub",
+      "url": "https://social.gindiahr.com",
+      "mainEntity": [
+        {"@type": "Person", "name": "Usha Singh", "url": "https://gindiahr.com", "telephone": "+91-6202254762"},
+        {"@type": "Person", "name": "Kairvy Trayaksh", "sameAs": ["https://www.instagram.com/kairvy_trayaksh/"]}
+      ]
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --orange: #F26522;
+            --insta: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            --yt: #FF0000;
+            --fb: #1877F2;
+            --text: #1A1A2E;
+            --sub: #5A6475;
+            --bg: #F7F8FA;
+            --white: #FFFFFF;
+            --border: #E8ECF0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* ───── TOP BAR ───── */
+        .topbar {
+            background: var(--text);
+            padding: 8px 20px;
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+        }
+        .topbar a { color: var(--orange); font-weight: 600; }
+
+        /* ───── HERO ───── */
+        .hero {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 52px 20px 44px;
+            text-align: center;
+        }
+        .brand-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #FFF3ED;
+            border: 1px solid #FFD9C5;
+            color: var(--orange);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 18px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 14px;
+            color: var(--text);
+        }
+        .hero h1 .grad {
+            background: var(--insta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 16px;
+            color: var(--sub);
+            max-width: 520px;
+            margin: 0 auto 28px;
+            line-height: 1.7;
+        }
+        .social-count-row {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .s-count {
+            text-align: center;
+        }
+        .s-count .num {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--text);
+        }
+        .s-count .lbl {
+            font-size: 12px;
+            color: var(--sub);
+            font-weight: 600;
+        }
+
+        /* ───── SECTION ───── */
+        .section { padding: 52px 20px; }
+        .section-alt { background: var(--white); }
+        .container { max-width: 900px; margin: 0 auto; }
+        .sec-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--sub);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 32px;
+            color: var(--text);
+        }
+
+        /* ───── KAIRVY SPOTLIGHT ───── */
+        .spotlight {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 36px 28px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .spotlight::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+            background: var(--insta);
+        }
+        .spotlight-inner {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+        .avatar-ring {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            padding: 3px;
+            background: var(--insta);
+            flex-shrink: 0;
+        }
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            border: 2px solid #fff;
+        }
+        .spotlight-info h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .spotlight-info p {
+            font-size: 14px;
+            color: var(--sub);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        .insta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #fff;
+            background: var(--insta);
+            transition: transform .2s, box-shadow .2s;
+        }
+        .insta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(188,24,136,0.25);
+        }
+        .badge-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            color: var(--sub);
+            background: var(--bg);
+        }
+
+        /* ───── CHANNEL CARDS ───── */
+        .channels-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .ch-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 24px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all .25s;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .ch-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+        }
+        .ch-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .ch-icon.yt { background: #FFF0F0; }
+        .ch-icon.fb { background: #EFF5FF; }
+        .ch-icon.ig { background: #FDF2F8; }
+        .ch-info h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .ch-info p {
+            font-size: 12px;
+            color: var(--sub);
+            margin-bottom: 6px;
+        }
+        .ch-tag {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .ch-tag.yt { background: #FFF0F0; color: var(--yt); }
+        .ch-tag.fb { background: #EFF5FF; color: var(--fb); }
+        .ch-tag.ig { background: #FDF2F8; color: #BC1888; }
+        .ch-arrow {
+            margin-left: auto;
+            font-size: 18px;
+            color: var(--sub);
+        }
+
+        /* ───── SEO TIPS / WHY FOLLOW ───── */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .why-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px 16px;
+            text-align: center;
+        }
+        .why-icon { font-size: 30px; margin-bottom: 10px; }
+        .why-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 5px; color: var(--text); }
+        .why-card p { font-size: 12px; color: var(--sub); line-height: 1.6; }
+
+        /* ───── SHARE BOX ───── */
+        .share-box {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+        }
+        .share-box h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .share-box p {
+            font-size: 14px;
+            color: var(--sub);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .share-btns {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 22px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            transition: all .2s;
+            cursor: pointer;
+            border: none;
+        }
+        .share-btn:hover { transform: translateY(-2px); }
+        .share-btn.wa { background: #25D366; }
+        .share-btn.ig-share { background: var(--insta); }
+        .share-btn.copy { background: var(--text); }
+
+        /* ───── URL COPY BOX ───── */
+        .url-copy {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 16px;
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .url-copy span {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            flex: 1;
+        }
+        .url-copy button {
+            background: var(--orange);
+            color: #fff;
+            border: none;
+            padding: 7px 16px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* ───── FOOTER ───── */
+        footer {
+            background: var(--text);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 13px;
+        }
+        footer a { color: var(--orange); }
+
+        /* ───── RESPONSIVE ───── */
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 32px; }
+            .channels-grid { grid-template-columns: 1fr; }
+            .spotlight-inner { flex-direction: column; text-align: center; }
+            .why-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 26px; }
+            .why-grid { grid-template-columns: 1fr; }
+            .social-count-row { gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+    🌐 GINDiA Group &nbsp;|&nbsp; <a href="https://gindiahr.com">gindiahr.com</a> &nbsp;|&nbsp; <a href="tel:+916202254762">📞 +91 6202254762</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="brand-pill">📱 GINDiA Social Hub</div>
+    <h1>All Our Channels<br><span class="grad">in One Place</span></h1>
+    <p class="hero-sub">Follow GINDiA Group on Instagram, YouTube & Facebook. HR tips, AI insights, kids content, lifestyle & more — all from Patna, Bihar! 🇮🇳</p>
+    <div class="social-count-row">
+        <div class="s-count"><div class="num">6</div><div class="lbl">Social Channels</div></div>
+        <div class="s-count"><div class="num">2</div><div class="lbl">YouTube Channels</div></div>
+        <div class="s-count"><div class="num">2</div><div class="lbl">Instagram Pages</div></div>
+        <div class="s-count"><div class="num">2</div><div class="lbl">Facebook Pages</div></div>
+    </div>
+</div>
+
+<!-- KAIRVY SPOTLIGHT -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="sec-label">⭐ Featured Creator</div>
+        <h2>Meet Kairvy Trayaksh 👸</h2>
+
+        <div class="spotlight">
+            <div class="spotlight-inner">
+                <div class="avatar-ring">
+                    <div class="avatar-inner">👧</div>
+                </div>
+                <div class="spotlight-info">
+                    <div class="badge-row">
+                        <span class="badge">✨ Lifestyle</span>
+                        <span class="badge">📸 Instagram Creator</span>
+                        <span class="badge">🌸 Young Blogger</span>
+                    </div>
+                    <h3>Kairvy Trayaksh</h3>
+                    <p>Follow Kairvy's beautiful journey — fashion, lifestyle, day-to-day adventures and creative content. A young voice from Patna making her mark on social media! 💫</p>
+                    <a href="https://www.instagram.com/kairvy_trayaksh/" target="_blank" rel="noopener" class="insta-btn" id="kairvy-insta-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Follow on Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ALL CHANNELS -->
+<section class="section">
+    <div class="container">
+        <div class="sec-label">All Channels</div>
+        <h2>📢 Follow GINDiA Everywhere</h2>
+
+        <div class="channels-grid">
+
+            <!-- INSTAGRAM 1 — Kairvy -->
+            <a href="https://www.instagram.com/kairvy_trayaksh/" target="_blank" rel="noopener" class="ch-card" id="ch-kairvy-ig">
+                <div class="ch-icon ig">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="url(#igGrad)">
+                        <defs><linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs>
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </div>
+                <div class="ch-info">
+                    <h4>@kairvy_trayaksh</h4>
+                    <p>Kairvy's lifestyle & fashion blog</p>
+                    <span class="ch-tag ig">Instagram</span>
+                </div>
+                <div class="ch-arrow">→</div>
+            </a>
+
+            <!-- INSTAGRAM 2 — GIndiaHR -->
+            <a href="https://www.instagram.com/gindiahr/" target="_blank" rel="noopener" class="ch-card" id="ch-gindia-ig">
+                <div class="ch-icon ig">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="url(#igGrad2)">
+                        <defs><linearGradient id="igGrad2" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs>
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </div>
+                <div class="ch-info">
+                    <h4>GIndiaHR Official</h4>
+                    <p>HR tips, hiring advice & updates</p>
+                    <span class="ch-tag ig">Instagram</span>
+                </div>
+                <div class="ch-arrow">→</div>
+            </a>
+
+            <!-- YOUTUBE 1 -->
+            <a href="https://www.youtube.com/@gindiahr" target="_blank" rel="noopener" class="ch-card" id="ch-yt1">
+                <div class="ch-icon yt">
+                    <svg width="28" height="20" viewBox="0 0 24 17" fill="#FF0000">
+                        <path d="M23.495 2.205a3.02 3.02 0 0 0-2.122-2.122C19.505 0 12 0 12 0S4.495 0 2.627.083a3.02 3.02 0 0 0-2.122 2.122C0 4.073 0 8 0 8s0 3.927.505 5.795a3.02 3.02 0 0 0 2.122 2.122C4.495 16 12 16 12 16s7.505 0 9.373-.083a3.02 3.02 0 0 0 2.122-2.122C24 11.927 24 8 24 8s0-3.927-.505-5.795zM9.545 11.568V4.432L15.818 8l-6.273 3.568z"/>
+                    </svg>
+                </div>
+                <div class="ch-info">
+                    <h4>GIndia HR YouTube</h4>
+                    <p>HR tips, recruitment guides, career advice</p>
+                    <span class="ch-tag yt">YouTube</span>
+                </div>
+                <div class="ch-arrow">→</div>
+            </a>
+
+            <!-- YOUTUBE 2 -->
+            <a href="https://www.youtube.com/@gindia-tech" target="_blank" rel="noopener" class="ch-card" id="ch-yt2">
+                <div class="ch-icon yt">
+                    <svg width="28" height="20" viewBox="0 0 24 17" fill="#FF0000">
+                        <path d="M23.495 2.205a3.02 3.02 0 0 0-2.122-2.122C19.505 0 12 0 12 0S4.495 0 2.627.083a3.02 3.02 0 0 0-2.122 2.122C0 4.073 0 8 0 8s0 3.927.505 5.795a3.02 3.02 0 0 0 2.122 2.122C4.495 16 12 16 12 16s7.505 0 9.373-.083a3.02 3.02 0 0 0 2.122-2.122C24 11.927 24 8 24 8s0-3.927-.505-5.795zM9.545 11.568V4.432L15.818 8l-6.273 3.568z"/>
+                    </svg>
+                </div>
+                <div class="ch-info">
+                    <h4>GIndia Tech YouTube</h4>
+                    <p>AI tutorials, tech demos, software tips</p>
+                    <span class="ch-tag yt">YouTube</span>
+                </div>
+                <div class="ch-arrow">→</div>
+            </a>
+
+            <!-- FACEBOOK 1 -->
+            <a href="https://www.facebook.com/gindiahr" target="_blank" rel="noopener" class="ch-card" id="ch-fb1">
+                <div class="ch-icon fb">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="#1877F2">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </div>
+                <div class="ch-info">
+                    <h4>GIndiaHR Facebook</h4>
+                    <p>HR news, job openings, Patna updates</p>
+                    <span class="ch-tag fb">Facebook</span>
+                </div>
+                <div class="ch-arrow">→</div>
+            </a>
+
+            <!-- FACEBOOK 2 -->
+            <a href="https://www.facebook.com/gindia.tech" target="_blank" rel="noopener" class="ch-card" id="ch-fb2">
+                <div class="ch-icon fb">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="#1877F2">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </div>
+                <div class="ch-info">
+                    <h4>GIndia Tech Facebook</h4>
+                    <p>AI solutions, software demos, tech tips</p>
+                    <span class="ch-tag fb">Facebook</span>
+                </div>
+                <div class="ch-arrow">→</div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- WHY FOLLOW -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="sec-label">What You'll Get</div>
+        <h2>🌟 Why Follow GINDiA?</h2>
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="why-icon">💼</div>
+                <h4>HR & Career Tips</h4>
+                <p>Daily job tips, resume advice, interview hacks from Patna's #1 HR consultancy.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🤖</div>
+                <h4>AI & Tech Content</h4>
+                <p>Latest AI trends, WhatsApp bot demos, real-world tech solutions made in Patna.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">👧</div>
+                <h4>Kairvy's Lifestyle</h4>
+                <p>Young blogger Kairvy Trayaksh shares her daily life, fashion & creative content.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🎓</div>
+                <h4>Kids Learning</h4>
+                <p>Fun educational content for kids — phonics, numbers, games and more.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🏙️</div>
+                <h4>Patna & Bihar</h4>
+                <p>Local insights, Patna business news, Bihar success stories & opportunities.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🚀</div>
+                <h4>Business Growth</h4>
+                <p>How to grow your business with AI, digital marketing, and smart hiring in India.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SHARE / VIRAL SECTION -->
+<section class="section">
+    <div class="container">
+        <div class="share-box">
+            <h3>📤 Share This Page & Help Us Grow!</h3>
+            <p>Share <strong>social.gindiahr.com</strong> with your friends. Every share helps Kairvy and GINDiA reach more people!</p>
+            <div class="share-btns">
+                <button class="share-btn wa" onclick="shareWhatsApp()" id="share-wa">
+                    📱 Share on WhatsApp
+                </button>
+                <button class="share-btn copy" onclick="copyLink()" id="share-copy">
+                    🔗 Copy Link
+                </button>
+            </div>
+            <div class="url-copy">
+                <span>🌐 social.gindiahr.com</span>
+                <button onclick="copyLink()">Copy</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2025 GINDiA Group | Usha Singh — Founder | 📞 <a href="tel:+916202254762">+91 6202254762</a> | ✉️ <a href="mailto:contact@gindiahr.com">contact@gindiahr.com</a></p>
+    <p style="margin-top:8px;"><a href="https://gindiahr.com">gindiahr.com</a> &nbsp;|&nbsp; <a href="https://tech.gindiahr.com">tech.gindiahr.com</a> &nbsp;|&nbsp; <a href="https://kids.gindiahr.com">kids.gindiahr.com</a></p>
+</footer>
+
+<script>
+    function shareWhatsApp() {
+        const text = '🌟 GINDiA Social Hub — Follow Kairvy Trayaksh on Instagram and all GINDiA channels in one place!\n\n👉 https://social.gindiahr.com\n\n#GIndiaHR #KairvyTrayaksh #Patna';
+        window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(text), '_blank');
+    }
+
+    function copyLink() {
+        const btn = document.getElementById('share-copy');
+        navigator.clipboard.writeText('https://social.gindiahr.com').then(() => {
+            btn.textContent = '✅ Copied!';
+            setTimeout(() => { btn.textContent = '🔗 Copy Link'; }, 3000);
+        });
+    }
+
+    // Animate cards on scroll
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+                setTimeout(() => {
+                    e.target.style.opacity = '1';
+                    e.target.style.transform = 'translateY(0)';
+                }, i * 60);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.ch-card, .why-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(14px)';
+        el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        observer.observe(el);
+    });
+</script>
+
+</body>
+</html>
