@@ -7,16 +7,22 @@
     <meta name="description" content="Listen to 100% original real-life GINDiA Audio Stories with live word karaoke, voice switcher and auto-scrolling." />
     <link rel="canonical" href="https://social.gindiahr.com/stories.html" />
     <link rel="icon" type="image/png" href="https://gindiahr.com/images/logo/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@700;800;900&family=Baloo+2:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&family=Baloo+2:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #F26522;
             --primary-grad: linear-gradient(135deg, #F26522 0%, #FF3366 50%, #7928CA 100%);
+            --accent-pink: #FF3366;
+            --accent-purple: #7928CA;
+            --accent-cyan: #06B6D4;
+            --accent-amber: #F59E0B;
             --bg-page: #F8FAFC;
             --bg-card: #FFFFFF;
             --text-main: #0F172A;
             --text-muted: #64748B;
             --border: #E2E8F0;
+            --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+            --shadow-hover: 0 20px 35px -10px rgba(242, 101, 34, 0.22), 0 10px 15px -5px rgba(242, 101, 34, 0.1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body {
@@ -30,15 +36,15 @@
         }
         a { text-decoration: none; color: inherit; }
 
-        /* ATTRACTIVE HEADER */
+        /* ATTRACTIVE TOP APPBAR */
         nav {
             background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(16px);
             border-bottom: 2px solid;
             border-image: var(--primary-grad) 1;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            padding: 0 20px;
-            height: 62px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            padding: 0 16px;
+            height: 64px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -46,14 +52,22 @@
             top: 0;
             z-index: 100;
         }
-        .nav-logo { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 900; color: var(--text-main); }
-        .nav-logo span {
+        .nav-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-logo-badge {
             background: var(--primary-grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .nav-links { display: flex; gap: 8px; }
-        .nav-btn {
+        .nav-actions { display: flex; gap: 8px; align-items: center; }
+        .nav-btn-pill {
             font-size: 12px;
             font-weight: 700;
             color: var(--text-main);
@@ -62,33 +76,65 @@
             background: #F1F5F9;
             border: 1px solid var(--border);
             transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
-        .nav-btn:hover { background: var(--primary-grad); color: #FFF; border-color: transparent; }
+        .nav-btn-pill:hover {
+            background: var(--primary-grad);
+            color: #FFF;
+            border-color: transparent;
+            transform: translateY(-1px);
+        }
 
-        /* HERO BANNER */
+        /* HERO BANNER WITH VIBRANT ACCENT */
         .hub-hero {
-            background: linear-gradient(135deg, #FFF1F2 0%, #FFF7ED 50%, #F5F3FF 100%);
-            padding: 28px 16px 20px;
+            background: radial-gradient(circle at 10% 20%, rgba(255, 228, 230, 0.7) 0%, rgba(255, 247, 237, 0.6) 45%, rgba(245, 243, 255, 0.7) 100%);
+            padding: 32px 16px 24px;
             text-align: center;
             border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-sparkle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #FFFFFF;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #E11D48;
+            border: 1px solid #FECDD3;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.1);
+            margin-bottom: 10px;
         }
         .hub-hero h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 900;
             background: var(--primary-grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+            line-height: 1.25;
         }
-        .hub-hero p { font-size: 13px; color: var(--text-muted); max-width: 540px; margin: 6px auto 0; }
+        .hub-hero p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            max-width: 580px;
+            margin: 8px auto 0;
+            line-height: 1.6;
+        }
 
-        /* HORIZONTAL CATEGORY SCROLLER */
+        /* STICKY QUICK-CHIPS */
         .category-scroll-wrap {
-            padding: 12px 16px 8px;
+            padding: 10px 16px;
             background: #FFFFFF;
             border-bottom: 1px solid var(--border);
             position: sticky;
-            top: 62px;
+            top: 64px;
             z-index: 90;
         }
         .category-scroll {
@@ -96,16 +142,17 @@
             gap: 8px;
             overflow-x: auto;
             scrollbar-width: none;
-            padding-bottom: 4px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
         .category-scroll::-webkit-scrollbar { display: none; }
         .cat-chip {
-            background: #F1F5F9;
+            background: #F8FAFC;
             border: 1px solid var(--border);
             color: var(--text-main);
-            padding: 8px 16px;
+            padding: 7px 15px;
             border-radius: 50px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             white-space: nowrap;
             display: flex;
@@ -113,178 +160,326 @@
             gap: 6px;
             transition: all 0.25s;
         }
-        .cat-chip:hover {
+        .cat-chip:hover, .cat-chip.active {
             background: var(--primary-grad);
             color: #FFF;
-            transform: scale(1.03);
+            transform: translateY(-2px);
             border-color: transparent;
+            box-shadow: 0 4px 14px rgba(242, 101, 34, 0.3);
         }
 
         .content-wrap {
-            max-width: 1080px;
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 20px 16px;
+            padding: 24px 16px 40px;
             width: 100%;
             flex: 1;
         }
+
         .section-header-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 14px;
+            margin: 10px 0 16px;
         }
         .section-title {
             font-family: 'Poppins', sans-serif;
-            font-size: 19px;
-            font-weight: 800;
+            font-size: 18px;
+            font-weight: 900;
             color: var(--text-main);
             display: flex;
             align-items: center;
             gap: 8px;
         }
+        .section-tag {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--primary);
+            background: #FFF7ED;
+            border: 1px solid #FFEDD5;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
 
-        /* CATEGORY CARDS */
+        /* ATTRACTIVE CATEGORY CARDS GRID */
         .cat-cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 12px;
-            margin-bottom: 28px;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 34px;
         }
         .cat-card-item {
             background: #FFFFFF;
             border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 16px;
-            text-align: center;
-            transition: all 0.25s;
-            cursor: pointer;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
-        }
-        .cat-card-item:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary);
-            box-shadow: 0 8px 24px rgba(242, 101, 34, 0.15);
-        }
-        .cat-card-item .emoji { font-size: 34px; margin-bottom: 6px; }
-        .cat-card-item .title { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; color: var(--text-main); }
-        .cat-card-item .sub { font-size: 11px; color: var(--text-muted); }
-
-        /* STORY CARDS GRID */
-        .story-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-            gap: 14px;
-        }
-        .story-card-native {
-            background: #FFFFFF;
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 16px;
+            border-radius: 20px;
+            padding: 18px 20px;
             display: flex;
-            gap: 14px;
             align-items: center;
-            transition: all 0.25s;
+            gap: 16px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            box-shadow: var(--shadow-card);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
         }
-        .story-card-native:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary);
-            box-shadow: 0 8px 24px rgba(242, 101, 34, 0.16);
+        .cat-card-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--cat-color, var(--primary-grad));
+            border-radius: 20px 0 0 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-        .story-thumb {
-            width: 66px;
-            height: 66px;
+        .cat-card-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(242, 101, 34, 0.3);
+        }
+        .cat-card-item:hover::before { opacity: 1; }
+
+        .cat-card-icon-box {
+            width: 54px;
+            height: 54px;
             border-radius: 16px;
-            background: var(--primary-grad);
+            background: var(--cat-bg, #FFF1F2);
+            border: 1px solid var(--cat-border, #FFE4E6);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
+            font-size: 26px;
             flex-shrink: 0;
-            box-shadow: 0 6px 16px rgba(242, 101, 34, 0.3);
+            transition: transform 0.3s ease;
         }
-        .story-info { flex: 1; min-width: 0; }
-        .story-tag-pill {
-            font-size: 10px;
+        .cat-card-item:hover .cat-card-icon-box { transform: scale(1.12) rotate(4deg); }
+        .cat-card-content { flex: 1; min-width: 0; }
+        .cat-card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.3;
+        }
+        .cat-card-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+        .cat-card-arrow {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #F1F5F9;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.25s;
+        }
+        .cat-card-item:hover .cat-card-arrow {
+            background: var(--primary-grad);
+            color: #FFF;
+            transform: translateX(3px);
+        }
+
+        /* ATTRACTIVE STORY CARDS GRID */
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 18px;
+        }
+        .story-card-premium {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 14px;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+        .story-card-premium::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 22px;
+            border: 2px solid transparent;
+            pointer-events: none;
+            transition: border-color 0.3s;
+        }
+        .story-card-premium:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(242, 101, 34, 0.35);
+        }
+        .story-card-premium:hover::after {
+            border-color: rgba(242, 101, 34, 0.2);
+        }
+
+        .story-card-top {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .story-thumb-art {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            background: var(--card-grad, var(--primary-grad));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            flex-shrink: 0;
+            box-shadow: 0 8px 18px rgba(242, 101, 34, 0.28);
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .story-card-premium:hover .story-thumb-art {
+            transform: scale(1.08) rotate(3deg);
+        }
+        .live-dot {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #10B981;
+            border: 2px solid #FFF;
+        }
+
+        .story-details { flex: 1; min-width: 0; }
+        .story-pill-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+        .badge-cat {
+            font-size: 10.5px;
             font-weight: 800;
             color: #E11D48;
             background: #FFE4E6;
-            padding: 2px 8px;
+            padding: 3px 8px;
             border-radius: 50px;
-            display: inline-block;
-            margin-bottom: 3px;
         }
-        .story-name {
-            font-family: 'Baloo 2', cursive;
-            font-size: 17px;
-            font-weight: 800;
-            color: var(--text-main);
-            line-height: 1.25;
-        }
-        .story-subtitle {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .story-play-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .badge-time {
+            font-size: 10px;
+            font-weight: 700;
+            color: #475569;
             background: #F1F5F9;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            flex-shrink: 0;
-            transition: all 0.2s;
-            border: 1px solid var(--border);
-        }
-        .story-card-native:hover .story-play-icon {
-            background: var(--primary-grad);
-            color: #FFF;
-            transform: scale(1.1);
-            border-color: transparent;
+            padding: 3px 8px;
+            border-radius: 50px;
         }
 
+        .story-title-hi {
+            font-family: 'Baloo 2', cursive;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.3;
+            margin-top: 2px;
+        }
+        .story-title-en {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 3px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* STORY CARD BOTTOM ACTION */
+        .story-card-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border);
+            gap: 10px;
+        }
+        .story-features {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+        .feature-chip {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .play-action-btn {
+            background: #F8FAFC;
+            color: var(--primary);
+            border: 1px solid var(--border);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 7px 16px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.25s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+        .story-card-premium:hover .play-action-btn {
+            background: var(--primary-grad);
+            color: #FFFFFF;
+            border-color: transparent;
+            box-shadow: 0 6px 18px rgba(242, 101, 34, 0.35);
+            transform: scale(1.05);
+        }
+
+        /* FOOTER */
         footer {
             background: #FFFFFF;
             border-top: 1px solid var(--border);
-            padding: 24px 16px;
+            padding: 28px 16px;
             text-align: center;
-            font-size: 12px;
+            font-size: 12.5px;
             color: var(--text-muted);
             margin-top: auto;
+            line-height: 1.6;
         }
         footer a { color: var(--primary); font-weight: 700; }
     </style>
 </head>
 <body>
 
+    <!-- TOP BAR -->
     <nav>
         <a href="index.html" class="nav-logo">
-            <span>GINDiA</span> Stories Hub
+            <span class="nav-logo-badge">GINDiA</span> Stories Hub
         </a>
-        <div class="nav-links">
-            <a href="index.html" class="nav-btn">📱 Social Hub</a>
-            <a href="https://kids.gindiahr.com/stories.html" class="nav-btn">🧒 Kids Stories</a>
-            <a href="https://game.gindiahr.com" class="nav-btn">🎮 Games</a>
+        <div class="nav-actions">
+            <a href="index.html" class="nav-btn-pill">📱 Social Hub</a>
+            <a href="https://kids.gindiahr.com/stories.html" class="nav-btn-pill">🧒 Kids Stories</a>
+            <a href="https://game.gindiahr.com" class="nav-btn-pill">🎮 Games</a>
         </div>
     </nav>
 
+    <!-- HERO -->
     <div class="hub-hero">
-        <h1>✨ GINDiA Audio Stories Hub</h1>
-        <p>100% मौलिक व वास्तविक कहानियाँ — रियल इंडियन आवाज़, टेलीप्रॉम्प्टर ऑटो-स्क्रॉल और लाइव वर्ड हाइलाइटिंग के साथ।</p>
+        <div class="hero-sparkle">✨ 100% Original & Real Audio Experience</div>
+        <h1>GINDiA Audio Stories Hub</h1>
+        <p>असली भारतीय आवाज़, टेलीप्रॉम्प्टर ऑटो-स्क्रॉल और लाइव वर्ड हाइलाइटिंग के साथ दिल दहला देने वाली सस्पेंस, प्रेरणा और ऐतिहासिक दास्तानें।</p>
     </div>
 
+    <!-- QUICK CHIPS -->
     <div class="category-scroll-wrap">
         <div class="category-scroll">
-            <a href="stories.html" class="cat-chip" style="background: var(--primary-grad); color:#fff; border-color:transparent;">✨ All Stories (सभी)</a>
+            <a href="stories.html" class="cat-chip active">✨ All Stories (सभी कहानियां)</a>
             <a href="category-suspense.html" class="cat-chip">🕵️ सस्पेंस व थ्रिलर (True Mystery)</a>
             <a href="category-inspirational.html" class="cat-chip">🚀 प्रेरणा व सफलता (Inspiration)</a>
             <a href="category-legend.html" class="cat-chip">🏺 प्राचीन गाथाएं (Legends)</a>
@@ -292,130 +487,261 @@
         </div>
     </div>
 
+    <!-- MAIN WRAPPER -->
     <main class="content-wrap">
+
+        <!-- CATEGORIES SECTION -->
         <div class="section-header-row">
-            <div class="section-title">📂 Browse by Category (कैटेगरी चुनें)</div>
+            <div class="section-title">📂 Explore by Genre (कैटेगरी चुनें)</div>
+            <span class="section-tag">4 Genres</span>
         </div>
 
         <div class="cat-cards-grid">
-            <a href="category-suspense.html" class="cat-card-item">
-                <div class="emoji">🕵️</div>
-                <div class="title">सस्पेंस व थ्रिलर</div>
-                <div class="sub">5 True Mystery Stories</div>
+            <!-- CAT 1 -->
+            <a href="category-suspense.html" class="cat-card-item" style="--cat-color: linear-gradient(135deg, #E11D48, #BE123C); --cat-bg: #FFE4E6; --cat-border: #FECDD3;">
+                <div class="cat-card-icon-box">🕵️</div>
+                <div class="cat-card-content">
+                    <div class="cat-card-title">सस्पेंस व थ्रिलर</div>
+                    <div class="cat-card-sub">5 True Mysteries • Real Life</div>
+                </div>
+                <div class="cat-card-arrow">➔</div>
             </a>
-            <a href="category-inspirational.html" class="cat-card-item">
-                <div class="emoji">🚀</div>
-                <div class="title">प्रेरणा व सफलता</div>
-                <div class="sub">Grit & Success</div>
+
+            <!-- CAT 2 -->
+            <a href="category-inspirational.html" class="cat-card-item" style="--cat-color: linear-gradient(135deg, #0284C7, #2563EB); --cat-bg: #E0F2FE; --cat-border: #BAE6FD;">
+                <div class="cat-card-icon-box">🚀</div>
+                <div class="cat-card-content">
+                    <div class="cat-card-title">प्रेरणा व सफलता</div>
+                    <div class="cat-card-sub">Grit & Success Stories</div>
+                </div>
+                <div class="cat-card-arrow">➔</div>
             </a>
-            <a href="category-legend.html" class="cat-card-item">
-                <div class="emoji">🏺</div>
-                <div class="title">प्राचीन गाथाएं</div>
-                <div class="sub">Indian Legends</div>
+
+            <!-- CAT 3 -->
+            <a href="category-legend.html" class="cat-card-item" style="--cat-color: linear-gradient(135deg, #D97706, #B45309); --cat-bg: #FEF3C7; --cat-border: #FDE68A;">
+                <div class="cat-card-icon-box">🏺</div>
+                <div class="cat-card-content">
+                    <div class="cat-card-title">प्राचीन गाथाएं</div>
+                    <div class="cat-card-sub">Indian Folklore & Legends</div>
+                </div>
+                <div class="cat-card-arrow">➔</div>
             </a>
-            <a href="category-moral.html" class="cat-card-item">
-                <div class="emoji">👑</div>
-                <div class="title">अकबर-बीरबल व न्याय</div>
-                <div class="sub">Wit & Justice</div>
+
+            <!-- CAT 4 -->
+            <a href="category-moral.html" class="cat-card-item" style="--cat-color: linear-gradient(135deg, #7C3AED, #9333EA); --cat-bg: #F3E8FF; --cat-border: #E9D5FF;">
+                <div class="cat-card-icon-box">👑</div>
+                <div class="cat-card-content">
+                    <div class="cat-card-title">अकबर-बीरबल व न्याय</div>
+                    <div class="cat-card-sub">Royal Wit & Court Justice</div>
+                </div>
+                <div class="cat-card-arrow">➔</div>
             </a>
         </div>
 
+        <!-- STORIES SECTION -->
         <div class="section-header-row">
-            <div class="section-title">📚 All Stories (हर कहानी का अलग पेज)</div>
-            <span style="font-size:12px; color:var(--primary); font-weight:800; background:#FFE4E6; padding:2px 8px; border-radius:20px;">8 Stories</span>
+            <div class="section-title">📚 All Audio Stories (हर कहानी का अलग पेज)</div>
+            <span class="section-tag">8 Original Tracks</span>
         </div>
 
         <div class="story-grid">
+
             <!-- STORY 1 -->
-            <a href="story-berth-13a.html" class="story-card-native">
-                <div class="story-thumb">🚆</div>
-                <div class="story-info">
-                    <div class="story-tag-pill">सस्पेंस • True Mystery</div>
-                    <div class="story-name">हावड़ा-पटना एक्सप्रेस का 13A बर्थ</div>
-                    <div class="story-subtitle">रात के 2:40 बजे चलती ट्रेन में बंद कूपे का राज़</div>
+            <a href="story-berth-13a.html" class="story-card-premium" style="--card-grad: linear-gradient(135deg, #E11D48 0%, #BE123C 100%);">
+                <div class="story-card-top">
+                    <div class="story-thumb-art">
+                        🚆
+                        <span class="live-dot" title="Audio Active"></span>
+                    </div>
+                    <div class="story-details">
+                        <div class="story-pill-row">
+                            <span class="badge-cat">🕵️ सस्पेंस • Train Mystery</span>
+                            <span class="badge-time">⏱️ 3 Min</span>
+                        </div>
+                        <h2 class="story-title-hi">हावड़ा-पटना एक्सप्रेस का 13A बर्थ</h2>
+                        <p class="story-title-en">The Mystery of Berth 13A at 2:40 AM — रात के 2:40 बजे चलती ट्रेन में बंद कूपे का राज़</p>
+                    </div>
                 </div>
-                <div class="story-play-icon">▶</div>
+                <div class="story-card-bottom">
+                    <div class="story-features">
+                        <span class="feature-chip">🎙️ Female / Male / Child</span>
+                    </div>
+                    <div class="play-action-btn">▶ Listen Now</div>
+                </div>
             </a>
 
             <!-- STORY 2 -->
-            <a href="story-rohtasgarh-vault.html" class="story-card-native">
-                <div class="story-thumb">🏰</div>
-                <div class="story-info">
-                    <div class="story-tag-pill">सस्पेंस • Fort Labyrinth</div>
-                    <div class="story-name">रोहतासगढ़ किले का बंद कमरा</div>
-                    <div class="story-subtitle">भूमिगत भूलभुलैया में गायब शोधकर्ता का अनसुलझा राज़</div>
+            <a href="story-rohtasgarh-vault.html" class="story-card-premium" style="--card-grad: linear-gradient(135deg, #D97706 0%, #B45309 100%);">
+                <div class="story-card-top">
+                    <div class="story-thumb-art">
+                        🏰
+                        <span class="live-dot" title="Audio Active"></span>
+                    </div>
+                    <div class="story-details">
+                        <div class="story-pill-row">
+                            <span class="badge-cat" style="color:#D97706; background:#FEF3C7;">🏰 किला सस्पेंस • Fort Labyrinth</span>
+                            <span class="badge-time">⏱️ 4 Min</span>
+                        </div>
+                        <h2 class="story-title-hi">रोहतासगढ़ किले का बंद कमरा</h2>
+                        <p class="story-title-en">The Lost Researcher in the 1500-ft Hilltop Fort — भूमिगत भूलभुलैया का अनसुलझा राज़</p>
+                    </div>
                 </div>
-                <div class="story-play-icon">▶</div>
+                <div class="story-card-bottom">
+                    <div class="story-features">
+                        <span class="feature-chip">🎙️ Multi Voice & BG Music</span>
+                    </div>
+                    <div class="play-action-btn">▶ Listen Now</div>
+                </div>
             </a>
 
             <!-- STORY 3 -->
-            <a href="story-1984-cassette.html" class="story-card-native">
-                <div class="story-thumb">📻</div>
-                <div class="story-info">
-                    <div class="story-tag-pill">सस्पेंस • Cold Case</div>
-                    <div class="story-name">1984 की वॉयस रिकॉर्डिंग का राज़</div>
-                    <div class="story-subtitle">डाक-बंगले के बेसमेंट में 40 साल पुराने केस का खुलासा</div>
+            <a href="story-1984-cassette.html" class="story-card-premium" style="--card-grad: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);">
+                <div class="story-card-top">
+                    <div class="story-thumb-art">
+                        📻
+                        <span class="live-dot" title="Audio Active"></span>
+                    </div>
+                    <div class="story-details">
+                        <div class="story-pill-row">
+                            <span class="badge-cat" style="color:#7C3AED; background:#F3E8FF;">📻 कोल्ड केस • 40-Year Cold Case</span>
+                            <span class="badge-time">⏱️ 3.5 Min</span>
+                        </div>
+                        <h2 class="story-title-hi">1984 की वॉयस रिकॉर्डिंग का राज़</h2>
+                        <p class="story-title-en">The 1984 Voice Tape Mystery — डाक-बंगले के बेसमेंट में 40 साल पुराने केस का वैज्ञानिक खुलासा</p>
+                    </div>
                 </div>
-                <div class="story-play-icon">▶</div>
+                <div class="story-card-bottom">
+                    <div class="story-features">
+                        <span class="feature-chip">🎙️ Teleprompter Karaoke</span>
+                    </div>
+                    <div class="play-action-btn">▶ Listen Now</div>
+                </div>
             </a>
 
             <!-- STORY 4 -->
-            <a href="story-ganga-phantom-boat.html" class="story-card-native">
-                <div class="story-thumb">🛶</div>
-                <div class="story-info">
-                    <div class="story-tag-pill">सस्पेंस • River Mystery</div>
-                    <div class="story-name">गंगा के कोहरे में भूतिया नाव</div>
-                    <div class="story-subtitle">दीघा घाट पर बिना मल्लाह के तैरती नाव का वैज्ञानिक पर्दाफाश</div>
+            <a href="story-ganga-phantom-boat.html" class="story-card-premium" style="--card-grad: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);">
+                <div class="story-card-top">
+                    <div class="story-thumb-art">
+                        🛶
+                        <span class="live-dot" title="Audio Active"></span>
+                    </div>
+                    <div class="story-details">
+                        <div class="story-pill-row">
+                            <span class="badge-cat" style="color:#0284C7; background:#E0F2FE;">🌊 नदी का रहस्य • River Mystery</span>
+                            <span class="badge-time">⏱️ 3 Min</span>
+                        </div>
+                        <h2 class="story-title-hi">गंगा के कोहरे में भूतिया नाव</h2>
+                        <p class="story-title-en">The Phantom Boat of the River Ghats — दीघा घाट पर बिना मल्लाह के तैरती नाव का पर्दाफाश</p>
+                    </div>
                 </div>
-                <div class="story-play-icon">▶</div>
+                <div class="story-card-bottom">
+                    <div class="story-features">
+                        <span class="feature-chip">🎙️ Dynamic Word Glow</span>
+                    </div>
+                    <div class="play-action-btn">▶ Listen Now</div>
+                </div>
             </a>
 
             <!-- STORY 5 -->
-            <a href="story-midnight-knock.html" class="story-card-native">
-                <div class="story-thumb">🕵️</div>
-                <div class="story-info">
-                    <div class="story-tag-pill">सस्पेंस व थ्रिलर • Highway Mystery</div>
-                    <div class="story-name">रात के बारह बजे की दस्तक</div>
-                    <div class="story-subtitle">The Midnight Knock on Highway 31</div>
+            <a href="story-midnight-knock.html" class="story-card-premium" style="--card-grad: linear-gradient(135deg, #F26522 0%, #FF3366 100%);">
+                <div class="story-card-top">
+                    <div class="story-thumb-art">
+                        🕵️
+                        <span class="live-dot" title="Audio Active"></span>
+                    </div>
+                    <div class="story-details">
+                        <div class="story-pill-row">
+                            <span class="badge-cat">🕵️ हाईवे थ्रिलर • Highway 31</span>
+                            <span class="badge-time">⏱️ 3.5 Min</span>
+                        </div>
+                        <h2 class="story-title-hi">रात के बारह बजे की दस्तक</h2>
+                        <p class="story-title-en">The Midnight Knock on Highway 31 — चाय ढाबे पर बारिश में भीगे अनजान मुसाफिर की दास्तान</p>
+                    </div>
                 </div>
-                <div class="story-play-icon">▶</div>
+                <div class="story-card-bottom">
+                    <div class="story-features">
+                        <span class="feature-chip">🎙️ Hindi & English Subtitles</span>
+                    </div>
+                    <div class="play-action-btn">▶ Listen Now</div>
+                </div>
             </a>
 
             <!-- STORY 6 -->
-            <a href="story-patna-stars.html" class="story-card-native">
-                <div class="story-thumb">🚀</div>
-                <div class="story-info">
-                    <div class="story-tag-pill">प्रेरणा व सफलता • True Grit</div>
-                    <div class="story-name">हौसलों की उड़ान — पटना से अंतरिक्ष तक</div>
-                    <div class="story-subtitle">Wings of Grit: From Patna to the Stars</div>
+            <a href="story-patna-stars.html" class="story-card-premium" style="--card-grad: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                <div class="story-card-top">
+                    <div class="story-thumb-art">
+                        🚀
+                        <span class="live-dot" title="Audio Active"></span>
+                    </div>
+                    <div class="story-details">
+                        <div class="story-pill-row">
+                            <span class="badge-cat" style="color:#059669; background:#D1FAE5;">🚀 प्रेरणा • True Grit</span>
+                            <span class="badge-time">⏱️ 3 Min</span>
+                        </div>
+                        <h2 class="story-title-hi">हौसलों की उड़ान — पटना से अंतरिक्ष तक</h2>
+                        <p class="story-title-en">Wings of Grit: From Patna to the Stars — साइकिल मिस्त्री के बेटे का इसरो चंद्र मिशन का सफर</p>
+                    </div>
                 </div>
-                <div class="story-play-icon">▶</div>
+                <div class="story-card-bottom">
+                    <div class="story-features">
+                        <span class="feature-chip">🎙️ Indian Voices</span>
+                    </div>
+                    <div class="play-action-btn">▶ Listen Now</div>
+                </div>
             </a>
 
             <!-- STORY 7 -->
-            <a href="story-philosopher-stone.html" class="story-card-native">
-                <div class="story-thumb">🏺</div>
-                <div class="story-info">
-                    <div class="story-tag-pill">प्राचीन रहस्य • Folk Legend</div>
-                    <div class="story-name">अनोखा पारस पत्थर और लालची व्यापारी</div>
-                    <div class="story-subtitle">The Philosopher's Stone & Merchant</div>
+            <a href="story-philosopher-stone.html" class="story-card-premium" style="--card-grad: linear-gradient(135deg, #CA8A04 0%, #A16207 100%);">
+                <div class="story-card-top">
+                    <div class="story-thumb-art">
+                        🏺
+                        <span class="live-dot" title="Audio Active"></span>
+                    </div>
+                    <div class="story-details">
+                        <div class="story-pill-row">
+                            <span class="badge-cat" style="color:#CA8A04; background:#FEF9C3;">🏺 प्राचीन रहस्य • Folk Legend</span>
+                            <span class="badge-time">⏱️ 3 Min</span>
+                        </div>
+                        <h2 class="story-title-hi">अनोखा पारस पत्थर और लालची व्यापारी</h2>
+                        <p class="story-title-en">The Philosopher's Stone & Merchant — 24 घंटे के लिए मिले जादुई पारस पत्थर की सीख</p>
+                    </div>
                 </div>
-                <div class="story-play-icon">▶</div>
+                <div class="story-card-bottom">
+                    <div class="story-features">
+                        <span class="feature-chip">🎙️ Speed & Music Switch</span>
+                    </div>
+                    <div class="play-action-btn">▶ Listen Now</div>
+                </div>
             </a>
 
             <!-- STORY 8 -->
-            <a href="story-golden-urn.html" class="story-card-native">
-                <div class="story-thumb">👑</div>
-                <div class="story-info">
-                    <div class="story-tag-pill">अकबर-बीरबल • Royal Wit</div>
-                    <div class="story-name">सोने के घड़े का रहस्य और बीरबल का न्याय</div>
-                    <div class="story-subtitle">The Mystery of the Stolen Gold Urn</div>
+            <a href="story-golden-urn.html" class="story-card-premium" style="--card-grad: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);">
+                <div class="story-card-top">
+                    <div class="story-thumb-art">
+                        👑
+                        <span class="live-dot" title="Audio Active"></span>
+                    </div>
+                    <div class="story-details">
+                        <div class="story-pill-row">
+                            <span class="badge-cat" style="color:#7C3AED; background:#F3E8FF;">👑 अकबर-बीरबल • Royal Wit</span>
+                            <span class="badge-time">⏱️ 3 Min</span>
+                        </div>
+                        <h2 class="story-title-hi">सोने के घड़े का रहस्य और बीरबल का न्याय</h2>
+                        <p class="story-title-en">The Mystery of the Stolen Gold Urn — चतुर बीरबल का तेल व्यापारियों से दूध का दूध और पानी का पानी न्याय</p>
+                    </div>
                 </div>
-                <div class="story-play-icon">▶</div>
+                <div class="story-card-bottom">
+                    <div class="story-features">
+                        <span class="feature-chip">🎙️ Real Voice Teleprompter</span>
+                    </div>
+                    <div class="play-action-btn">▶ Listen Now</div>
+                </div>
             </a>
+
         </div>
     </main>
 
+    <!-- FOOTER -->
     <footer>
         <p>© 2025 GINDiA Stories | Part of <a href="https://gindiahr.com">GIndiaHR Group</a> • Patna, Bihar<br>
         100% Free Engaging Audio Stories with Real Voices, Auto-Scroll & Live Word Karaoke</p>

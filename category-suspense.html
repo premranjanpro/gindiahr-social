@@ -6,16 +6,19 @@
     <title>सस्पेंस व थ्रिलर कहानियाँ | GINDiA Audio Stories | GINDiA Social</title>
     <meta name="description" content="Listen to thrilling 100% original real-life suspense and mystery audio stories in Hindi and English on GINDiA Social."/>
     <link rel="icon" type="image/png" href="https://gindiahr.com/images/logo/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@700;800;900&family=Baloo+2:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&family=Baloo+2:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #F26522;
             --primary-grad: linear-gradient(135deg, #F26522 0%, #FF3366 50%, #7928CA 100%);
+            --accent-crimson: #E11D48;
             --bg-page: #F8FAFC;
             --bg-card: #FFFFFF;
             --text-main: #0F172A;
             --text-muted: #64748B;
             --border: #E2E8F0;
+            --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+            --shadow-hover: 0 20px 35px -10px rgba(225, 29, 72, 0.25), 0 10px 15px -5px rgba(225, 29, 72, 0.1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body {
@@ -25,17 +28,19 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
         a { text-decoration: none; color: inherit; }
 
+        /* TOP APPBAR */
         nav {
             background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(16px);
             border-bottom: 2px solid;
             border-image: var(--primary-grad) 1;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            padding: 0 20px;
-            height: 60px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            padding: 0 16px;
+            height: 64px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -43,171 +48,421 @@
             top: 0;
             z-index: 100;
         }
-        .nav-logo { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 900; color: var(--text-main); }
+        .nav-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--text-main);
+        }
         .nav-logo span {
             background: var(--primary-grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .back-btn {
+        .back-btn-pill {
             font-size: 13px;
             font-weight: 700;
             color: var(--text-main);
-            padding: 7px 14px;
+            padding: 7px 15px;
             border-radius: 50px;
             background: #F1F5F9;
             border: 1px solid var(--border);
             transition: all 0.2s;
-        }
-        .back-btn:hover { background: #E2E8F0; }
-
-        .cat-hero {
-            padding: 24px 16px 18px;
-            text-align: center;
-            background: linear-gradient(135deg, #FFF1F2 0%, #FFF7ED 100%);
-            border-bottom: 1px solid var(--border);
-        }
-        .cat-icon-lg { font-size: 44px; margin-bottom: 4px; }
-        .cat-hero h1 { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 900; color: var(--text-main); }
-        .cat-hero p { font-size: 13px; color: var(--text-muted); max-width: 520px; margin: 4px auto 0; }
-
-        .content-wrap { max-width: 900px; margin: 0 auto; padding: 18px 16px; width: 100%; flex: 1; }
-        .story-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
-        .story-card {
-            background: #FFFFFF;
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 16px;
             display: flex;
-            gap: 14px;
             align-items: center;
-            transition: all 0.25s;
-            cursor: pointer;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+            gap: 5px;
         }
-        .story-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary);
-            box-shadow: 0 8px 24px rgba(242, 101, 34, 0.16);
+        .back-btn-pill:hover {
+            background: #E2E8F0;
+            transform: translateX(-2px);
         }
-        .story-thumb {
-            width: 66px;
-            height: 66px;
-            border-radius: 16px;
-            background: var(--primary-grad);
-            display: flex;
+
+        /* CATEGORY HERO */
+        .cat-hero {
+            padding: 32px 16px 24px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 30%, #FFE4E6 0%, #FFF1F2 60%, #F8FAFC 100%);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+        .cat-icon-badge {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #FFE4E6, #FECDD3);
+            border: 2px solid #FDA4AF;
             font-size: 32px;
-            flex-shrink: 0;
-            box-shadow: 0 6px 16px rgba(242, 101, 34, 0.3);
+            margin-bottom: 8px;
+            box-shadow: 0 8px 20px rgba(225, 29, 72, 0.15);
         }
-        .story-info { flex: 1; min-width: 0; }
-        .story-tag {
-            font-size: 10px;
+        .cat-hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+        .cat-hero p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            max-width: 540px;
+            margin: 6px auto 0;
+            line-height: 1.6;
+        }
+
+        .content-wrap {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 24px 16px 40px;
+            width: 100%;
+            flex: 1;
+        }
+
+        .section-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .count-badge {
+            font-size: 11px;
             font-weight: 800;
             color: #E11D48;
             background: #FFE4E6;
-            padding: 2px 8px;
+            padding: 4px 12px;
             border-radius: 50px;
-            display: inline-block;
-            margin-bottom: 3px;
         }
-        .story-title { font-family: 'Baloo 2', cursive; font-size: 17px; font-weight: 800; color: var(--text-main); line-height: 1.25; }
-        .story-sub { font-size: 12px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .play-btn-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #F1F5F9;
-            color: var(--primary);
+
+        /* ATTRACTIVE STORY CARDS GRID */
+        .story-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 18px;
+        }
+        .story-card-premium {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 14px;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            cursor: pointer;
+        }
+        .story-card-premium::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 22px;
+            border: 2px solid transparent;
+            pointer-events: none;
+            transition: border-color 0.3s;
+        }
+        .story-card-premium:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(225, 29, 72, 0.4);
+        }
+        .story-card-premium:hover::after {
+            border-color: rgba(225, 29, 72, 0.25);
+        }
+
+        .story-card-top {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .story-thumb-art {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            background: var(--card-grad, linear-gradient(135deg, #E11D48 0%, #BE123C 100%));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 34px;
             flex-shrink: 0;
-            border: 1px solid var(--border);
-            transition: all 0.2s;
+            box-shadow: 0 8px 18px rgba(225, 29, 72, 0.28);
+            position: relative;
+            transition: transform 0.3s;
         }
-        .story-card:hover .play-btn-circle { background: var(--primary-grad); color: #FFF; border-color: transparent; transform: scale(1.1); }
-        footer { background: #FFFFFF; border-top: 1px solid var(--border); padding: 18px; text-align: center; font-size: 12px; color: var(--text-muted); }
+        .story-card-premium:hover .story-thumb-art {
+            transform: scale(1.08) rotate(3deg);
+        }
+        .live-dot {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #10B981;
+            border: 2px solid #FFF;
+        }
+
+        .story-details { flex: 1; min-width: 0; }
+        .story-pill-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+        .badge-cat {
+            font-size: 10.5px;
+            font-weight: 800;
+            color: #E11D48;
+            background: #FFE4E6;
+            padding: 3px 8px;
+            border-radius: 50px;
+        }
+        .badge-time {
+            font-size: 10px;
+            font-weight: 700;
+            color: #475569;
+            background: #F1F5F9;
+            padding: 3px 8px;
+            border-radius: 50px;
+        }
+
+        .story-title-hi {
+            font-family: 'Baloo 2', cursive;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.3;
+            margin-top: 2px;
+        }
+        .story-title-en {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 3px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .story-card-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border);
+            gap: 10px;
+        }
+        .story-features {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+        .feature-chip {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .play-action-btn {
+            background: #F8FAFC;
+            color: #E11D48;
+            border: 1px solid var(--border);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 7px 16px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.25s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+        .story-card-premium:hover .play-action-btn {
+            background: linear-gradient(135deg, #E11D48 0%, #BE123C 100%);
+            color: #FFFFFF;
+            border-color: transparent;
+            box-shadow: 0 6px 18px rgba(225, 29, 72, 0.35);
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #FFFFFF;
+            border-top: 1px solid var(--border);
+            padding: 24px 16px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: auto;
+        }
+        footer a { color: var(--primary); font-weight: 700; }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="stories.html" class="back-btn">← All Categories</a>
-        <div class="nav-logo"><span>GINDiA</span> Mystery & Suspense</div>
-        <a href="index.html" class="back-btn">📱 Social</a>
+        <a href="stories.html" class="back-btn-pill">← All Categories</a>
+        <div class="nav-logo"><span>GINDiA</span> True Suspense</div>
+        <a href="index.html" class="back-btn-pill">📱 Social</a>
     </nav>
 
     <div class="cat-hero">
-        <div class="cat-icon-lg">🕵️</div>
+        <div class="cat-icon-badge">🕵️</div>
         <h1>Mystery & True Suspense (सस्पेंस)</h1>
         <p>100% मौलिक, सच्ची घटनाओं व वैज्ञानिक पड़ताल पर आधारित दिल दहला देने वाली सस्पेंस दास्तानें।</p>
     </div>
 
     <main class="content-wrap">
+        <div class="section-header-row">
+            <div class="section-title">🎙️ Suspense Audio Stories</div>
+            <span class="count-badge">5 True Mysteries</span>
+        </div>
+
         <div class="story-list">
+
             <!-- STORY 1 -->
-            <a href="story-berth-13a.html" class="story-card">
-                <div class="story-thumb">🚆</div>
-                <div class="story-info">
-                    <div class="story-tag">रेलवे सस्पेंस • Train Mystery</div>
-                    <div class="story-title">हावड़ा-पटना एक्सप्रेस का 13A बर्थ</div>
-                    <div class="story-sub">The Mystery of Berth 13A at 2:40 AM</div>
+            <a href="story-berth-13a.html" class="story-card-premium" style="--card-grad: linear-gradient(135deg, #E11D48 0%, #9F1239 100%);">
+                <div class="story-card-top">
+                    <div class="story-thumb-art">
+                        🚆
+                        <span class="live-dot" title="Audio Ready"></span>
+                    </div>
+                    <div class="story-details">
+                        <div class="story-pill-row">
+                            <span class="badge-cat">🚆 रेलवे सस्पेंस • Train Mystery</span>
+                            <span class="badge-time">⏱️ 3 Min</span>
+                        </div>
+                        <h2 class="story-title-hi">हावड़ा-पटना एक्सप्रेस का 13A बर्थ</h2>
+                        <p class="story-title-en">The Mystery of Berth 13A at 2:40 AM — रात के 2:40 बजे चलती ट्रेन में बंद कूपे का राज़</p>
+                    </div>
                 </div>
-                <div class="play-btn-circle">▶</div>
+                <div class="story-card-bottom">
+                    <div class="story-features">
+                        <span class="feature-chip">🎙️ Female / Male / Child</span>
+                    </div>
+                    <div class="play-action-btn">▶ Listen Now</div>
+                </div>
             </a>
 
             <!-- STORY 2 -->
-            <a href="story-rohtasgarh-vault.html" class="story-card">
-                <div class="story-thumb">🏰</div>
-                <div class="story-info">
-                    <div class="story-tag">ऐतिहासिक रहस्य • Fort Labyrinth</div>
-                    <div class="story-title">रोहतासगढ़ किले का बंद कमरा</div>
-                    <div class="story-sub">The Lost Researcher of the Ancient Vault</div>
+            <a href="story-rohtasgarh-vault.html" class="story-card-premium" style="--card-grad: linear-gradient(135deg, #D97706 0%, #B45309 100%);">
+                <div class="story-card-top">
+                    <div class="story-thumb-art">
+                        🏰
+                        <span class="live-dot" title="Audio Ready"></span>
+                    </div>
+                    <div class="story-details">
+                        <div class="story-pill-row">
+                            <span class="badge-cat" style="color:#D97706; background:#FEF3C7;">🏰 किला सस्पेंस • Fort Labyrinth</span>
+                            <span class="badge-time">⏱️ 4 Min</span>
+                        </div>
+                        <h2 class="story-title-hi">रोहतासगढ़ किले का बंद कमरा</h2>
+                        <p class="story-title-en">The Lost Researcher of the Ancient Vault — 1500 फीट ऊंचे किले की भूलभुलैया का राज़</p>
+                    </div>
                 </div>
-                <div class="play-btn-circle">▶</div>
+                <div class="story-card-bottom">
+                    <div class="story-features">
+                        <span class="feature-chip">🎙️ Multi Voice & BG Music</span>
+                    </div>
+                    <div class="play-action-btn">▶ Listen Now</div>
+                </div>
             </a>
 
             <!-- STORY 3 -->
-            <a href="story-1984-cassette.html" class="story-card">
-                <div class="story-thumb">📻</div>
-                <div class="story-info">
-                    <div class="story-tag">अनसुलझा केस • 40-Year Cold Case</div>
-                    <div class="story-title">1984 की वॉयस रिकॉर्डिंग का राज़</div>
-                    <div class="story-sub">The Anonymous Vintage Cassette Mystery</div>
+            <a href="story-1984-cassette.html" class="story-card-premium" style="--card-grad: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);">
+                <div class="story-card-top">
+                    <div class="story-thumb-art">
+                        📻
+                        <span class="live-dot" title="Audio Ready"></span>
+                    </div>
+                    <div class="story-details">
+                        <div class="story-pill-row">
+                            <span class="badge-cat" style="color:#7C3AED; background:#F3E8FF;">📻 कोल्ड केस • 40-Year Cold Case</span>
+                            <span class="badge-time">⏱️ 3.5 Min</span>
+                        </div>
+                        <h2 class="story-title-hi">1984 की वॉयस रिकॉर्डिंग का राज़</h2>
+                        <p class="story-title-en">The Anonymous Vintage Cassette Mystery — 40 साल पुराने केस का वैज्ञानिक खुलासा</p>
+                    </div>
                 </div>
-                <div class="play-btn-circle">▶</div>
+                <div class="story-card-bottom">
+                    <div class="story-features">
+                        <span class="feature-chip">🎙️ Teleprompter Karaoke</span>
+                    </div>
+                    <div class="play-action-btn">▶ Listen Now</div>
+                </div>
             </a>
 
             <!-- STORY 4 -->
-            <a href="story-ganga-phantom-boat.html" class="story-card">
-                <div class="story-thumb">🛶</div>
-                <div class="story-info">
-                    <div class="story-tag">नदी का रहस्य • River Mystery</div>
-                    <div class="story-title">गंगा के कोहरे में भूतिया नाव</div>
-                    <div class="story-sub">The Phantom Boat of the River Ghats</div>
+            <a href="story-ganga-phantom-boat.html" class="story-card-premium" style="--card-grad: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);">
+                <div class="story-card-top">
+                    <div class="story-thumb-art">
+                        🛶
+                        <span class="live-dot" title="Audio Ready"></span>
+                    </div>
+                    <div class="story-details">
+                        <div class="story-pill-row">
+                            <span class="badge-cat" style="color:#0284C7; background:#E0F2FE;">🌊 नदी का रहस्य • River Mystery</span>
+                            <span class="badge-time">⏱️ 3 Min</span>
+                        </div>
+                        <h2 class="story-title-hi">गंगा के कोहरे में भूतिया नाव</h2>
+                        <p class="story-title-en">The Phantom Boat of the River Ghats — दीघा घाट पर बिना मल्लाह के तैरती नाव का पर्दाफाश</p>
+                    </div>
                 </div>
-                <div class="play-btn-circle">▶</div>
+                <div class="story-card-bottom">
+                    <div class="story-features">
+                        <span class="feature-chip">🎙️ Dynamic Word Glow</span>
+                    </div>
+                    <div class="play-action-btn">▶ Listen Now</div>
+                </div>
             </a>
 
             <!-- STORY 5 -->
-            <a href="story-midnight-knock.html" class="story-card">
-                <div class="story-thumb">🕵️</div>
-                <div class="story-info">
-                    <div class="story-tag">हाईवे थ्रिलर • Highway Mystery</div>
-                    <div class="story-title">रात के बारह बजे की दस्तक</div>
-                    <div class="story-sub">The Midnight Knock on Highway 31</div>
+            <a href="story-midnight-knock.html" class="story-card-premium" style="--card-grad: linear-gradient(135deg, #F26522 0%, #FF3366 100%);">
+                <div class="story-card-top">
+                    <div class="story-thumb-art">
+                        🕵️
+                        <span class="live-dot" title="Audio Ready"></span>
+                    </div>
+                    <div class="story-details">
+                        <div class="story-pill-row">
+                            <span class="badge-cat">🕵️ हाईवे थ्रिलर • Highway 31</span>
+                            <span class="badge-time">⏱️ 3.5 Min</span>
+                        </div>
+                        <h2 class="story-title-hi">रात के बारह बजे की दस्तक</h2>
+                        <p class="story-title-en">The Midnight Knock on Highway 31 — चाय ढाबे पर बारिश में भीगे अनजान मुसाफिर की दास्तान</p>
+                    </div>
                 </div>
-                <div class="play-btn-circle">▶</div>
+                <div class="story-card-bottom">
+                    <div class="story-features">
+                        <span class="feature-chip">🎙️ Hindi & English Subtitles</span>
+                    </div>
+                    <div class="play-action-btn">▶ Listen Now</div>
+                </div>
             </a>
+
         </div>
     </main>
 
     <footer>
-        <p>© 2025 GINDiA Stories | <a href="stories.html" style="color:var(--primary); font-weight:700;">Back to Categories</a></p>
+        <p>© 2025 GINDiA Stories | <a href="stories.html">Back to Categories Hub</a></p>
     </footer>
 
 </body>
