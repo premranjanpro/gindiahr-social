@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>GINDiA Audio Stories | सस्पेंस, प्रेरणा व ऐतिहासिक कहानियाँ | GINDiA Social</title>
-    <meta name="description" content="Listen to GINDiA Audio Stories on GINDiA Social. Thrilling mysteries, moral folktales, Akbar-Birbal wit and inspiring success journeys with word-by-word karaoke highlight and natural voice choices." />
-    <meta name="keywords" content="gindia audio stories, hindi suspense stories online, inspirational stories audio, real voice audio story india" />
+    <title>GINDiA Audio Stories Hub | सस्पेंस, प्रेरणा व ऐतिहासिक कहानियाँ | GINDiA Social</title>
+    <meta name="description" content="Listen to GINDiA Audio Stories on GINDiA Social with dedicated category pages and individual story pages featuring live word-by-word karaoke." />
     <link rel="canonical" href="https://social.gindiahr.com/stories.html" />
     <link rel="icon" type="image/png" href="https://gindiahr.com/images/logo/logo.png">
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800;900&family=Baloo+2:wght@600;700;800;900&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --orange: #F26522;
@@ -18,37 +15,20 @@
             --dark: #0B0F19;
             --surface: #141B2D;
             --surface-card: #1D263B;
-            --purple: #8B5CF6;
-            --pink: #EC4899;
             --sub: #94A3B8;
-            --highlight-word: #F26522;
-            --highlight-bg: rgba(242, 101, 34, 0.28);
             --border: rgba(255, 255, 255, 0.12);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body {
             font-family: 'Inter', sans-serif;
             background: var(--dark);
             color: #F8FAFC;
             min-height: 100vh;
-            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
         }
         a { text-decoration: none; color: inherit; }
-
-        /* TOPBAR & NAV */
-        .topbar {
-            background: #060911;
-            padding: 8px 20px;
-            text-align: center;
-            font-size: 13px;
-            color: rgba(255,255,255,0.6);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-        .topbar a { color: var(--orange); font-weight: 600; }
 
         nav {
             background: rgba(15, 23, 42, 0.95);
@@ -63,15 +43,7 @@
             top: 0;
             z-index: 100;
         }
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 19px;
-            font-weight: 900;
-            color: #FFF;
-        }
+        .nav-logo { font-family: 'Poppins', sans-serif; font-size: 19px; font-weight: 900; color: #FFF; }
         .nav-logo span { color: var(--orange); }
         .nav-links { display: flex; gap: 8px; }
         .nav-btn {
@@ -86,7 +58,6 @@
         }
         .nav-btn:hover { background: var(--insta); color: #FFF; border-color: transparent; }
 
-        /* CATEGORY SCROLLER */
         .category-scroll-wrap {
             padding: 12px 16px 8px;
             background: #0F172A;
@@ -112,21 +83,17 @@
             font-size: 13px;
             font-weight: 700;
             white-space: nowrap;
-            cursor: pointer;
-            transition: all 0.25s;
             display: flex;
             align-items: center;
             gap: 6px;
+            transition: all 0.25s;
         }
-        .cat-chip:hover, .cat-chip.active {
+        .cat-chip:hover {
             background: var(--insta);
             color: #FFF;
-            border-color: transparent;
-            box-shadow: 0 4px 14px rgba(220, 39, 67, 0.4);
             transform: scale(1.03);
         }
 
-        /* MAIN CONTENT */
         .content-wrap {
             max-width: 1080px;
             margin: 0 auto;
@@ -149,16 +116,33 @@
             align-items: center;
             gap: 8px;
         }
-        .story-count-badge {
-            background: rgba(242, 101, 34, 0.2);
-            color: var(--orange);
-            font-size: 12px;
-            font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 20px;
-        }
 
-        /* STORIES GRID */
+        /* BIG CATEGORY CARDS */
+        .cat-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .cat-card-item {
+            background: linear-gradient(135deg, #1E1B4B, #141B2D);
+            border: 1px solid rgba(242, 101, 34, 0.3);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            transition: all 0.25s;
+            cursor: pointer;
+        }
+        .cat-card-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--orange);
+            box-shadow: 0 8px 20px rgba(242, 101, 34, 0.3);
+        }
+        .cat-card-item .emoji { font-size: 34px; margin-bottom: 6px; }
+        .cat-card-item .title { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; color: #FDE047; }
+        .cat-card-item .sub { font-size: 11px; color: var(--sub); }
+
+        /* STORY CARDS GRID */
         .story-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
@@ -169,13 +153,12 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 16px;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
             display: flex;
             gap: 14px;
             align-items: center;
+            transition: all 0.25s;
+            position: relative;
+            overflow: hidden;
         }
         .story-card-native:hover {
             transform: translateY(-3px);
@@ -183,20 +166,9 @@
             border-color: var(--orange);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
-        .story-card-native::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; bottom: 0;
-            width: 4px;
-            background: var(--insta);
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-        .story-card-native:hover::after { opacity: 1; }
-
         .story-thumb {
-            width: 72px;
-            height: 72px;
+            width: 70px;
+            height: 70px;
             border-radius: 16px;
             background: var(--insta);
             display: flex;
@@ -221,9 +193,6 @@
             font-weight: 800;
             color: #FFF;
             line-height: 1.25;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
         .story-subtitle {
             font-size: 12px;
@@ -253,290 +222,6 @@
             transform: scale(1.1);
         }
 
-        /* ──── ANDROID FULLSCREEN ZERO-SCROLL PLAYER MODAL ──── */
-        .player-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: #0B0F19;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-            width: 100vw;
-            height: 100vh;
-            height: 100dvh;
-            animation: slideUp 0.28s ease-out;
-        }
-        .player-modal.open { display: flex; }
-        @keyframes slideUp {
-            from { transform: translateY(100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .player-appbar {
-            height: 54px;
-            padding: 0 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(15, 23, 42, 0.9);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            flex-shrink: 0;
-        }
-        .player-back-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: #FFF;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .player-header-title {
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 14px;
-            font-weight: 800;
-            color: #E2E8F0;
-        }
-        .player-header-badge {
-            font-size: 10px;
-            color: var(--orange);
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* MIDDLE PLAYER BODY */
-        .player-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            padding: 12px 16px;
-            overflow: hidden;
-            justify-content: space-evenly;
-            align-items: center;
-            text-align: center;
-            max-width: 640px;
-            margin: 0 auto;
-            width: 100%;
-        }
-        .player-art-wrap {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 6px;
-        }
-        .player-art-glow {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(242, 101, 34, 0.4) 0%, transparent 70%);
-            animation: pulseGlow 3s ease-in-out infinite alternate;
-        }
-        @keyframes pulseGlow {
-            0% { transform: scale(0.9); opacity: 0.5; }
-            100% { transform: scale(1.3); opacity: 0.9; }
-        }
-        .player-art-circle {
-            width: 76px;
-            height: 76px;
-            border-radius: 22px;
-            background: var(--insta);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            box-shadow: 0 8px 24px rgba(220, 39, 67, 0.45);
-            position: relative;
-            z-index: 1;
-            animation: artBob 3s ease-in-out infinite;
-        }
-        @keyframes artBob {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-
-        .wave-visualizer {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            height: 20px;
-            margin: 4px 0 8px;
-        }
-        .wave-bar {
-            width: 3px;
-            height: 6px;
-            background: var(--orange);
-            border-radius: 2px;
-            transition: height 0.15s ease;
-        }
-        .wave-bar.playing {
-            animation: waveBounce 0.8s ease-in-out infinite alternate;
-        }
-        .wave-bar:nth-child(2) { animation-delay: 0.1s; height: 12px; background: #EC4899; }
-        .wave-bar:nth-child(3) { animation-delay: 0.25s; height: 18px; background: #FDE047; }
-        .wave-bar:nth-child(4) { animation-delay: 0.15s; height: 10px; background: #8B5CF6; }
-        .wave-bar:nth-child(5) { animation-delay: 0.3s; height: 14px; background: var(--orange); }
-        @keyframes waveBounce {
-            0% { height: 4px; }
-            100% { height: 18px; }
-        }
-
-        .player-story-name {
-            font-family: 'Baloo 2', cursive;
-            font-size: 20px;
-            font-weight: 800;
-            color: #FDE047;
-            line-height: 1.2;
-            margin-bottom: 2px;
-        }
-        .player-story-theme {
-            font-size: 12px;
-            color: #CBD5E1;
-            margin-bottom: 8px;
-        }
-
-        /* WORD-BY-WORD KARAOKE BOX */
-        .karaoke-word-box {
-            background: rgba(15, 23, 42, 0.85);
-            border: 1.5px solid rgba(242, 101, 34, 0.4);
-            border-radius: 16px;
-            padding: 12px 14px;
-            width: 100%;
-            min-height: 90px;
-            max-height: 130px;
-            overflow-y: auto;
-            font-size: 16px;
-            line-height: 1.7;
-            color: #94A3B8;
-            text-align: left;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.4);
-        }
-        .karaoke-word {
-            display: inline-block;
-            padding: 1px 3px;
-            border-radius: 4px;
-            transition: all 0.12s ease;
-        }
-        .karaoke-word.word-active {
-            color: #FFFFFF !important;
-            background: var(--highlight-bg) !important;
-            border-bottom: 2px solid var(--highlight-word) !important;
-            font-weight: 800 !important;
-            transform: scale(1.06);
-            text-shadow: 0 0 10px rgba(242, 101, 34, 0.7);
-        }
-
-        .player-voice-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            margin-top: 8px;
-            flex-wrap: wrap;
-            width: 100%;
-        }
-        .voice-pill {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            color: #E2E8F0;
-            padding: 5px 10px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .voice-pill.active {
-            background: var(--insta);
-            color: #FFF;
-            border-color: transparent;
-            box-shadow: 0 2px 8px rgba(220, 39, 67, 0.4);
-        }
-
-        /* BOTTOM FIXED PLAYBACK CONTROLS SHEET */
-        .player-bottom-sheet {
-            background: #111827;
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 10px 16px 14px;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .player-main-controls {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            max-width: 480px;
-            margin: 0 auto;
-            width: 100%;
-        }
-        .btn-ctrl-sec {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #E2E8F0;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .btn-ctrl-sec:hover { background: rgba(255, 255, 255, 0.2); }
-        .btn-ctrl-play {
-            background: var(--insta);
-            border: none;
-            color: #FFF;
-            width: 54px;
-            height: 54px;
-            border-radius: 50%;
-            font-size: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5);
-            transition: all 0.2s;
-        }
-        .btn-ctrl-play:hover { transform: scale(1.08); }
-        .player-sub-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 480px;
-            margin: 0 auto;
-            width: 100%;
-        }
-        .btn-pill-sub {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #CBD5E1;
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        /* CONFETTI */
-        #confetti-box { position: fixed; inset: 0; pointer-events: none; z-index: 100000; }
-        .confetti-dot { position: absolute; top: -10px; animation: confettiDrop ease-in forwards; }
-        @keyframes confettiDrop { to { transform: translateY(105vh) rotate(720deg); opacity: 0; } }
-
-        /* FOOTER */
         footer {
             background: #080C16;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -546,16 +231,10 @@
             color: var(--sub);
             margin-top: auto;
         }
-        footer a { color: var(--orange); text-decoration: none; font-weight: 700; }
+        footer a { color: var(--orange); font-weight: 700; }
     </style>
 </head>
 <body>
-
-    <div id="confetti-box"></div>
-
-    <div class="topbar">
-        Part of <strong>GIndiaHR Group</strong> • Patna, Bihar | <a href="index.html">Follow Our Social Channels ↗</a>
-    </div>
 
     <!-- APP HEADER -->
     <nav>
@@ -572,602 +251,101 @@
     <!-- HORIZONTAL CATEGORY SCROLLER -->
     <div class="category-scroll-wrap">
         <div class="category-scroll">
-            <div class="cat-chip active" onclick="selectCategory('all', this)">✨ All (सभी)</div>
-            <div class="cat-chip" onclick="selectCategory('suspense', this)">🕵️ सस्पेंस व थ्रिलर (Mystery)</div>
-            <div class="cat-chip" onclick="selectCategory('inspirational', this)">🚀 प्रेरणा व सफलता (Inspiration)</div>
-            <div class="cat-chip" onclick="selectCategory('legend', this)">🏺 प्राचीन गाथाएं (Legends)</div>
-            <div class="cat-chip" onclick="selectCategory('moral', this)">👑 अकबर-बीरबल व न्याय (Wit)</div>
+            <a href="stories.html" class="cat-chip" style="background: var(--insta); color:#fff;">✨ All (सभी)</a>
+            <a href="category-suspense.html" class="cat-chip">🕵️ सस्पेंस व थ्रिलर (Mystery)</a>
+            <a href="category-inspirational.html" class="cat-chip">🚀 प्रेरणा व सफलता (Inspiration)</a>
+            <a href="category-legend.html" class="cat-chip">🏺 प्राचीन गाथाएं (Legends)</a>
+            <a href="category-moral.html" class="cat-chip">👑 अकबर-बीरबल व न्याय (Wit)</a>
         </div>
     </div>
 
     <!-- MAIN CONTENT -->
     <main class="content-wrap">
+        <!-- BROWSE BY CATEGORY -->
         <div class="section-header-row">
-            <div class="section-title">
-                <span id="category-heading-text">📚 All GINDiA Stories</span>
-                <span class="story-count-badge" id="story-count-display">4 Stories</span>
-            </div>
+            <div class="section-title">📂 Browse by Category (अलग-अलग कैटेगरी पेजेस)</div>
         </div>
 
-        <div class="story-grid" id="story-list-grid"></div>
+        <div class="cat-cards-grid">
+            <a href="category-suspense.html" class="cat-card-item">
+                <div class="emoji">🕵️</div>
+                <div class="title">सस्पेंस व थ्रिलर</div>
+                <div class="sub">Mystery & Thriller</div>
+            </a>
+            <a href="category-inspirational.html" class="cat-card-item">
+                <div class="emoji">🚀</div>
+                <div class="title">प्रेरणा व सफलता</div>
+                <div class="sub">Grit & Success</div>
+            </a>
+            <a href="category-legend.html" class="cat-card-item">
+                <div class="emoji">🏺</div>
+                <div class="title">प्राचीन गाथाएं</div>
+                <div class="sub">Indian Legends</div>
+            </a>
+            <a href="category-moral.html" class="cat-card-item">
+                <div class="emoji">👑</div>
+                <div class="title">अकबर-बीरबल व न्याय</div>
+                <div class="sub">Wit & Justice</div>
+            </a>
+        </div>
+
+        <!-- ALL STORIES -->
+        <div class="section-header-row">
+            <div class="section-title">📚 All Stories (हर कहानी का अलग पेज)</div>
+            <span style="font-size:12px; color:var(--orange); font-weight:800; background:rgba(242,101,34,0.2); padding:2px 8px; border-radius:20px;">4 Stories</span>
+        </div>
+
+        <div class="story-grid">
+            <!-- STORY 1 -->
+            <a href="story-midnight-knock.html" class="story-card-native">
+                <div class="story-thumb">🕵️</div>
+                <div class="story-info">
+                    <div class="story-tag-pill">सस्पेंस व थ्रिलर • Mystery</div>
+                    <div class="story-name">रात के बारह बजे की दस्तक</div>
+                    <div class="story-subtitle">The Midnight Knock on Highway 31</div>
+                </div>
+                <div class="story-play-icon">▶</div>
+            </a>
+
+            <!-- STORY 2 -->
+            <a href="story-patna-stars.html" class="story-card-native">
+                <div class="story-thumb">🚀</div>
+                <div class="story-info">
+                    <div class="story-tag-pill">प्रेरणा व सफलता • True Grit</div>
+                    <div class="story-name">हौसलों की उड़ान — पटना से अंतरिक्ष तक</div>
+                    <div class="story-subtitle">Wings of Grit: From Patna to the Stars</div>
+                </div>
+                <div class="story-play-icon">▶</div>
+            </a>
+
+            <!-- STORY 3 -->
+            <a href="story-philosopher-stone.html" class="story-card-native">
+                <div class="story-thumb">🏺</div>
+                <div class="story-info">
+                    <div class="story-tag-pill">प्राचीन रहस्य • Folk Legend</div>
+                    <div class="story-name">अनोखा पारस पत्थर और लालची व्यापारी</div>
+                    <div class="story-subtitle">The Philosopher's Stone & Merchant</div>
+                </div>
+                <div class="story-play-icon">▶</div>
+            </a>
+
+            <!-- STORY 4 -->
+            <a href="story-golden-urn.html" class="story-card-native">
+                <div class="story-thumb">👑</div>
+                <div class="story-info">
+                    <div class="story-tag-pill">अकबर-बीरबल • Royal Wit</div>
+                    <div class="story-name">सोने के घड़े का रहस्य और बीरबल का न्याय</div>
+                    <div class="story-subtitle">The Mystery of the Stolen Gold Urn</div>
+                </div>
+                <div class="story-play-icon">▶</div>
+            </a>
+        </div>
     </main>
-
-    <!-- ANDROID FULLSCREEN ZERO-SCROLL PLAYER MODAL -->
-    <div class="player-modal" id="player-modal">
-        <!-- TOP APPBAR -->
-        <div class="player-appbar">
-            <button class="player-back-btn" onclick="closePlayerModal()">←</button>
-            <div class="player-header-title">
-                <span class="player-header-badge" id="player-badge">GINDiA AUDIO STORY</span>
-                <span id="player-theme-tag">Mystery</span>
-            </div>
-            <button class="player-back-btn" onclick="closePlayerModal()">✕</button>
-        </div>
-
-        <!-- MIDDLE BODY (ARTWORK & WORD-BY-WORD KARAOKE) -->
-        <div class="player-body">
-            <div class="player-art-wrap">
-                <div class="player-art-glow"></div>
-                <div class="player-art-circle" id="player-emoji">🕵️</div>
-            </div>
-
-            <div class="wave-visualizer" id="wave-visualizer">
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-            </div>
-
-            <div>
-                <div class="player-story-name" id="player-title">रात के बारह बजे की दस्तक</div>
-                <div class="player-story-theme" id="player-sub">The Midnight Knock on Highway 31</div>
-            </div>
-
-            <!-- REAL-TIME WORD-BY-WORD KARAOKE TEXT BOX -->
-            <div class="karaoke-word-box" id="karaoke-word-container"></div>
-
-            <!-- VOICE SELECTOR ROW (FEMALE, MALE, CHILD) -->
-            <div class="player-voice-row">
-                <span style="font-size:11px; color:#CBD5E1; font-weight:700;">आवाज़ (Voice):</span>
-                <button class="voice-pill active" id="voice-btn-female" onclick="setVoiceGender('female')">👩 Female (महिला)</button>
-                <button class="voice-pill" id="voice-btn-male" onclick="setVoiceGender('male')">👨 Male (पुरुष)</button>
-                <button class="voice-pill" id="voice-btn-child" onclick="setVoiceGender('child')">🧒 Child (बच्चा)</button>
-            </div>
-        </div>
-
-        <!-- BOTTOM FIXED PLAYBACK CONTROLS SHEET (ZERO SCROLL) -->
-        <div class="player-bottom-sheet">
-            <div class="player-main-controls">
-                <button class="btn-ctrl-sec" onclick="prevSentence()" title="Previous line">⏮️</button>
-                <button class="btn-ctrl-play" id="btn-play-pause" onclick="togglePlayPause()">▶</button>
-                <button class="btn-ctrl-sec" onclick="nextSentence()" title="Next line">⏭️</button>
-            </div>
-
-            <div class="player-sub-controls">
-                <button class="btn-pill-sub" id="btn-lang" onclick="toggleLanguage()">🌐 🇮🇳 Hindi (हिन्दी)</button>
-                <button class="btn-pill-sub" id="btn-speed" onclick="cycleSpeed()">⚡ 0.9x</button>
-                <button class="btn-pill-sub" id="btn-music" onclick="toggleMusic()">🎵 Bg Music: ON</button>
-            </div>
-        </div>
-    </div>
 
     <footer>
         <p>© 2025 GINDiA Stories | Part of <a href="https://gindiahr.com">GIndiaHR Group</a> • Patna, Bihar<br>
-        100% Free Engaging Audio Stories & Podcast Series | Real Voice & Live Word Karaoke</p>
+        100% Free Engaging Audio Stories with Real Voices & Live Karaoke</p>
     </footer>
 
-    <script>
-        const storiesData = [
-            {
-                id: 'midnight_knock',
-                cat: 'suspense',
-                musicTheme: 'suspense',
-                emoji: '🕵️',
-                tag: 'सस्पेंस व थ्रिलर • Mystery',
-                titleHi: 'रात के बारह बजे की दस्तक',
-                titleEn: 'The Midnight Knock on Highway 31',
-                subHi: 'सच्ची ईमानदारी और हिम्मत से सुलझ गया आधी रात का गहरा राज़',
-                subEn: 'Courage and kindness solved the darkest midnight mystery',
-                preview: 'पटना हाईवे पर एक सुनसान ढाबे के बंद दरवाजे पर आधी रात को ठीक 12 बजे किसी ने घबराई हुई आवाज में दस्तक दी...',
-                sentencesHi: [
-                    'पटना-गया हाईवे पर घने कोहरे के बीच रामू का छोटा सा चाय ढाबा अकेला रोशन था।',
-                    'रात के ठीक बारह बजते ही अचानक लकड़ी के पुराने दरवाजे पर जोर-जोर से खटखटाहट हुई — "खट... खट... खट!"',
-                    'रामू ने सहमते हुए लालटेन उठाई और दरवाजा खोला, तो सामने बारिश में भीगा हुआ एक अनजान मुसाफिर खड़ा था।',
-                    'मुसाफिर के हाथ में एक पुराना चमड़े का भारी सूटकेस था और उसकी सांसें बुरी तरह फूल रही थीं।',
-                    'उसने कांपते होंठों से कहा, "भाईसाहब, कुछ अजनबी लोग जंगल के रास्ते से मेरा पीछा कर रहे हैं!"',
-                    'रामू ने बिना डरे उस मुसाफिर को ढाबे के अंदर खींचा और गुप्त गोदाम में छिपा दिया।',
-                    'कुछ ही पलों बाद तीन नकाबपोश बदमाश ढाबे पर आए और बंदूक दिखाकर सूटकेस की मांग करने लगे।',
-                    'रामू ने अपनी अक्ल का इस्तेमाल किया और ढाबे के गैस सिलेंडर का सायरन और सीटी बजा दी, जैसे पुलिस की जीप आ गई हो!',
-                    'पुलिस के डर से तीनों बदमाश जंगल में भाग खड़े हुए।',
-                    'मुसाफिर ने सूटकेस खोला — उसमें अनाथ बच्चों के अस्पताल के लिए जीवन रक्षक दवाइयां और दस्तावेज थे!',
-                    'मुसाफिर ने रोते हुए रामू के पैर छुए और कहा, "आज तुम्हारी हिम्मत ने सैकड़ों बेकसूर बच्चों की जान बचा ली।"',
-                    'सीख: किसी अनजान की निस्वार्थ मदद करना ही इंसानियत का सबसे बड़ा धर्म है।'
-                ],
-                sentencesEn: [
-                    'Along the foggy stretch of Highway 31 near Patna, Ramu\'s lonely roadside tea stall was the only light.',
-                    'Exactly at midnight, a frantic banging echoed on the wooden door — "Knock... Knock... Knock!"',
-                    'Trembling slightly, Ramu raised his lantern and opened the latch. A drenched traveler stood shivering in the torrential rain.',
-                    'The stranger clutched a heavy vintage leather briefcase, gasping for breath.',
-                    'He whispered in sheer panic, "Sir, dangerous pursuers are hunting me down through the forest!"',
-                    'Without hesitation, brave Ramu pulled him inside and hid him behind the stacked sacks in the cellar.',
-                    'Moments later, three masked bandits barged in, demanding the mysterious briefcase at gunpoint.',
-                    'Ramu quickly opened the high-pressure tea boiler valve, creating a piercing siren that sounded just like a police patrol!',
-                    'Terrified of the approaching sirens, the robbers fled into the dark jungle.',
-                    'The traveler opened the briefcase — it contained vital life-saving medicines and papers for an orphanage hospital!',
-                    'Tears rolled down the traveler\'s eyes as he embraced Ramu for saving hundreds of innocent lives.',
-                    'Moral: Real bravery is stepping up to protect others in their darkest hour of need.'
-                ]
-            },
-            {
-                id: 'patna_to_stars',
-                cat: 'inspirational',
-                musicTheme: 'inspirational',
-                emoji: '🚀',
-                tag: 'प्रेरणा व सफलता • True Grit',
-                titleHi: 'हौसलों की उड़ान — पटना से अंतरिक्ष तक',
-                titleEn: 'Wings of Grit: From Patna to the Stars',
-                subHi: 'सपनों की कोई सीमा नहीं होती, बस मेहनत में सच्चाई होनी चाहिए',
-                subEn: 'No dream is too big when fueled by relentless dedication',
-                preview: 'गंगा किनारे लालटेन की रोशनी में पढ़ने वाले एक छोटे से लड़के ने कैसे रचा अंतरिक्ष विज्ञान का नया इतिहास...',
-                sentencesHi: [
-                    'पटना के एक छोटे से मोहल्ले में कबीर नाम का एक लड़का रहता था, जिसके पिता साइकिल की दुकान चलाते थे।',
-                    'कबीर रात-रात भर लालटेन की पीली रोशनी में विज्ञान की पुरानी किताबें पढ़ा करता था।',
-                    'लोग उसका मजाक उड़ाते हुए कहते थे, "साइकिल मिस्त्री का बेटा क्या रॉकेट बनाएगा?"',
-                    'लेकिन कबीर ने कभी हिम्मत नहीं हारी। उसने अपनी मेहनत और लगन से इसरो की प्रवेश परीक्षा में देश में पहला स्थान हासिल किया।',
-                    'सालों के कठिन अनुसंधान के बाद, कबीर को भारत के ऐतिहासिक चंद्र मिशन की तकनीकी टीम का मुख्य वैज्ञानिक बनाया गया।',
-                    'जिस दिन रॉकेट ने बादलों को चीरते हुए चांद की सतह पर कदम रखा, पूरे देश की आंखें खुशी से छलक उठीं।',
-                    'कबीर ने मीडिया के सामने कहा, "यह जीत मेरी नहीं, बल्कि हर उस बच्चे के विश्वास की है जो अभावों में भी आसमान छूने का सपना देखता है!"',
-                    'सीख: आपकी पृष्ठभूमि कभी आपकी मंजिल तय नहीं करती, आपके बुलंद हौसले करते हैं।'
-                ],
-                sentencesEn: [
-                    'In a modest alley of Patna lived Kabir, a curious boy whose father repaired bicycle punctures.',
-                    'Every night under the flickering glow of a kerosene lamp, Kabir devoured advanced physics books.',
-                    'Neighbors mocked him saying, "How can a puncture mechanic\'s son ever build spaceships?"',
-                    'Kabir never argued; he just worked silently. With fierce dedication, he topped the national aerospace exam.',
-                    'Years of tireless research led him to become the Lead Scientist for India\'s historic Lunar Mission.',
-                    'When the spacecraft touched down gracefully on the Moon, a billion hearts swelled with immense pride.',
-                    'In front of global cameras, Kabir said, "Never let humble beginnings define the height of your ambitions!"',
-                    'Moral: Hard work and unshakeable belief turn impossible dreams into historic reality.'
-                ]
-            },
-            {
-                id: 'philosopher_stone',
-                cat: 'legend',
-                musicTheme: 'moral',
-                emoji: '🏺',
-                tag: 'प्राचीन रहस्य • Folk Legend',
-                titleHi: 'अनोखा पारस पत्थर और लालची व्यापारी',
-                titleEn: 'The Philosopher\'s Stone and the Greedy Merchant',
-                subHi: 'संतोष सबसे बड़ा धन है, लालच इंसान को अंधा बना देता है',
-                subEn: 'Contentment is the greatest wealth; greed destroys wisdom',
-                preview: 'हिमालय के साधु ने व्यापारी को एक दिन के लिए दिया पारस पत्थर, लेकिन लालच ने सब कुछ तबाह कर दिया...',
-                sentencesHi: [
-                    'पाटलिपुत्र के एक बहुत बड़े धनी व्यापारी धनपत के पास अपार दौलत थी, लेकिन उसका लालच कभी खत्म नहीं होता था।',
-                    'एक दिन उसके घर एक तपस्वी साधु आए। व्यापारी की आवभगत से प्रसन्न होकर साधु ने उसे 24 घंटे के लिए एक चमत्कारी पारस पत्थर दिया।',
-                    'साधु ने कहा, "कल सूर्यास्त तक तुम इस पत्थर से जितना भी लोहा छुओगे, वह शुद्ध सोना बन जाएगा!"',
-                    'व्यापारी खुशी से पागल हो गया। उसने तुरंत शहर भर से सारा लोहा खरीदने का हुक्म दे दिया।',
-                    'वह पूरे दिन सस्ते दाम में और ज्यादा लोहा खरीदने के लिए मोलभाव करता रहा।',
-                    'दिन ढलता गया और शाम के छह बज गए। व्यापारी अब भी सोच रहा था कि थोड़ा और लोहा मिल जाए तो छूऊंगा।',
-                    'अचानक पश्चिम दिशा में सूरज डूब गया और साधु प्रकट होकर अपना पारस पत्थर वापस ले गए!',
-                    'व्यापारी के गोदाम में सिर्फ जंग लगा हुआ काला लोहा पड़ा रह गया और वह अपना सिर पकड़कर रोने लगा।',
-                    'सीख: जो समय पर सही फैसला नहीं लेता, लालच में उसका सब कुछ नष्ट हो जाता है।'
-                ],
-                sentencesEn: [
-                    'In ancient Pataliputra lived Dhanpat, an immensely wealthy merchant whose greed knew no bounds.',
-                    'One evening, a Himalayan sage gifted him a mystical Philosopher\'s Stone for precisely 24 hours.',
-                    'The sage warned, "Whatever iron you touch with this stone before tomorrow\'s sunset will turn into pure 24K gold!"',
-                    'Overjoyed, the merchant ordered his assistants to purchase tons of iron from every neighboring village.',
-                    'However, instead of transforming the iron he already had, he wasted the entire day bargaining for even cheaper scrap iron!',
-                    'The afternoon passed in endless hesitation and greed. Suddenly, the golden sun slipped below the horizon.',
-                    'The sage appeared, took back the enchanted stone, leaving the merchant weeping amid mountains of useless rusty iron!',
-                    'Moral: Procrastination born of limitless greed leads to absolute regret. Value the present opportunity.'
-                ]
-            },
-            {
-                id: 'golden_urn',
-                cat: 'moral',
-                musicTheme: 'inspirational',
-                emoji: '👑',
-                tag: 'अकबर-बीरबल • Royal Wit',
-                titleHi: 'सोने के घड़े का रहस्य और बीरबल का न्याय',
-                titleEn: 'The Mystery of the Stolen Gold Urn',
-                subHi: 'झूठ की बुनियाद पर बना महल एक दिन जरूर ढह जाता है',
-                subEn: 'Truth always prevails over deceit and cunning conspiracies',
-                preview: 'हज यात्रा पर जाते समय पड़ोसी को सौंपा गया सोने से भरा घड़ा वापस मांगने पर उसने पहचानने से भी इनकार कर दिया...',
-                sentencesHi: [
-                    'आगरा शहर में कासिम नाम का एक ईमानदार व्यापारी अपने पड़ोसी जमील को सोने के सिक्कों से भरा घड़ा सौंपकर तीर्थ यात्रा पर गया।',
-                    'दो साल बाद जब कासिम लौटा और उसने अपना घड़ा वापस मांगा, तो लालची जमील मुकर गया और बोला, "तुमने तो मुझे केवल सरसों का तेल दिया था!"',
-                    'कासिम रोते हुए बादशाह अकबर के दरबार में न्याय की गुहार लगाने पहुंचा।',
-                    'अकबर ने इस पेचीदा मुकदमे को सुलझाने की जिम्मेदारी चतुर बीरबल को सौंपी।',
-                    'बीरबल ने घड़े में बचे हुए तेल की जांच करवाई और आगरा के सबसे पुराने तेल व्यापारियों को बुलवाया।',
-                    'व्यापारियों ने सूंघकर बताया कि यह तेल केवल दो महीने पुराना है, जबकि कासिम तो दो साल पहले गया था!',
-                    'बीरबल ने तुरंत साबित कर दिया कि जमील ने दो महीने पहले घड़े से सारा सोना निकालकर उसमें नया तेल भर दिया था।',
-                    'जमील ने डरकर अपना जुर्म कबूल कर लिया और कासिम को उसका पूरा सोना वापस मिल गया।',
-                    'सीख: चालाकी से किया गया छल ज्यादा दिन नहीं टिकता, सच की आंखें सब देख लेती हैं।'
-                ],
-                sentencesEn: [
-                    'In royal Agra, an honest trader named Qasim entrusted an urn of gold coins to his neighbor Jameel before going on a pilgrimage.',
-                    'When Qasim returned after two long years, greedy Jameel denied everything, saying, "You only gave me ordinary mustard oil!"',
-                    'Desperate and weeping, Qasim approached Emperor Akbar\'s royal court for justice.',
-                    'Akbar assigned the perplexing case to his wisest counselor, Birbal.',
-                    'Birbal inspected the oil remaining at the bottom and summoned Agra\'s master oil merchants.',
-                    'Examining the aroma, the merchants confirmed, "This oil is barely two months fresh; two-year-old oil would have turned rancid!"',
-                    'Birbal proved that Jameel had emptied the gold coins just two months ago and filled it with fresh oil!',
-                    'Cornered by undeniable logic, Jameel confessed and returned every single gold coin to Qasim.',
-                    'Moral: Deceit may look clever for a moment, but truth always triumphs under the light of wisdom.'
-                ]
-            }
-        ];
-
-        let currentCategory = 'all';
-        let currentStoryIndex = 0;
-        let currentSentenceIndex = 0;
-        let currentLang = 'hi';
-        let currentVoiceGender = 'female';
-        let playbackSpeed = 0.92;
-        let isPlaying = false;
-        let speechTimer = null;
-        let wordTimer = null;
-
-        let audioCtx = null;
-        let gainNode = null;
-        let isMusicEnabled = true;
-
-        const musicFrequencies = {
-            suspense: [73.42, 110.00, 146.83, 220.00],
-            moral: [130.81, 164.81, 196.00, 261.63],
-            inspirational: [174.61, 220.00, 261.63, 349.23],
-            legend: [110.00, 164.81, 220.00, 277.18]
-        };
-
-        function startThemeMusic(theme = 'moral') {
-            try {
-                if (!isMusicEnabled) return;
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                if (!AudioContext) return;
-                if (!audioCtx) audioCtx = new AudioContext();
-                if (audioCtx.state === 'suspended') audioCtx.resume();
-                if (gainNode) return;
-
-                gainNode = audioCtx.createGain();
-                gainNode.gain.setValueAtTime(0.032, audioCtx.currentTime);
-                gainNode.connect(audioCtx.destination);
-
-                const freqs = musicFrequencies[theme] || musicFrequencies.moral;
-                freqs.forEach(f => {
-                    const osc = audioCtx.createOscillator();
-                    osc.type = theme === 'suspense' ? 'triangle' : 'sine';
-                    osc.frequency.setValueAtTime(f, audioCtx.currentTime);
-
-                    const filter = audioCtx.createBiquadFilter();
-                    filter.type = 'lowpass';
-                    filter.frequency.setValueAtTime(theme === 'suspense' ? 320 : 480, audioCtx.currentTime);
-
-                    osc.connect(filter);
-                    filter.connect(gainNode);
-                    osc.start();
-                });
-            } catch(e) {}
-        }
-
-        function stopThemeMusic() {
-            try {
-                if (gainNode && audioCtx) {
-                    gainNode.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 0.35);
-                    setTimeout(() => { gainNode = null; }, 400);
-                }
-            } catch(e) {}
-        }
-
-        function toggleMusic() {
-            isMusicEnabled = !isMusicEnabled;
-            document.getElementById('btn-music').textContent = isMusicEnabled ? '🎵 Bg Music: ON' : '🔇 Bg Music: OFF';
-            if (isMusicEnabled && isPlaying) {
-                const story = storiesData[currentStoryIndex];
-                startThemeMusic(story.musicTheme);
-            } else {
-                stopThemeMusic();
-            }
-        }
-
-        function getVoiceForGender(lang, gender) {
-            const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
-            if (!voices || voices.length === 0) return null;
-
-            if (lang === 'hi') {
-                const hi = voices.filter(v => v.lang.startsWith('hi') || v.name.includes('Hindi') || v.name.includes('हिन्दी'));
-                if (hi.length > 0) {
-                    if (gender === 'female') {
-                        const f = hi.find(v => v.name.includes('Kalpana') || v.name.includes('Female') || v.name.includes('Google हिन्दी'));
-                        if (f) return f;
-                    } else if (gender === 'male') {
-                        const m = hi.find(v => v.name.includes('Hemant') || v.name.includes('Male'));
-                        if (m) return m;
-                    }
-                    return hi[0];
-                }
-            }
-
-            const en = voices.filter(v => v.lang === 'en-IN' || v.name.includes('India'));
-            if (en.length > 0) {
-                if (gender === 'female') {
-                    const f = en.find(v => v.name.includes('Female') || v.name.includes('Heera') || v.name.includes('Zira'));
-                    if (f) return f;
-                } else if (gender === 'male') {
-                    const m = en.find(v => v.name.includes('Male') || v.name.includes('Ravi') || v.name.includes('David'));
-                    if (m) return m;
-                }
-                return en[0];
-            }
-
-            return voices.find(v => v.lang.startsWith('en')) || voices[0];
-        }
-
-        function setVoiceGender(g) {
-            currentVoiceGender = g;
-            ['female', 'male', 'child'].forEach(id => {
-                const btn = document.getElementById(`voice-btn-${id}`);
-                if (btn) btn.classList.toggle('active', id === g);
-            });
-            if (isPlaying) speakCurrentSentence();
-        }
-
-        function renderStoryCards(cat = 'all') {
-            const grid = document.getElementById('story-list-grid');
-            grid.innerHTML = '';
-            const filtered = cat === 'all' ? storiesData : storiesData.filter(s => s.cat === cat);
-
-            document.getElementById('story-count-display').textContent = `${filtered.length} Stories`;
-
-            filtered.forEach(story => {
-                const realIdx = storiesData.indexOf(story);
-                const card = document.createElement('div');
-                card.className = 'story-card-native';
-                card.innerHTML = `
-                    <div class="story-thumb">${story.emoji}</div>
-                    <div class="story-info">
-                        <div class="story-tag-pill">${story.tag}</div>
-                        <div class="story-name">${currentLang === 'hi' ? story.titleHi : story.titleEn}</div>
-                        <div class="story-subtitle">${currentLang === 'hi' ? story.subHi : story.subEn}</div>
-                    </div>
-                    <div class="story-play-icon">▶</div>
-                `;
-                card.onclick = () => openAndPlayStory(realIdx);
-                grid.appendChild(card);
-            });
-        }
-
-        function selectCategory(cat, chip) {
-            currentCategory = cat;
-            if (chip) {
-                document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
-                chip.classList.add('active');
-            }
-            const catNames = {
-                all: '📚 All GINDiA Stories',
-                suspense: '🕵️ सस्पेंस व थ्रिलर (Mystery Stories)',
-                inspirational: '🚀 प्रेरणा व सफलता (Inspirational Stories)',
-                legend: '🏺 प्राचीन गाथाएं (Legends)',
-                moral: '👑 अकबर-बीरबल व न्याय (Wit Stories)'
-            };
-            document.getElementById('category-heading-text').textContent = catNames[cat] || '📚 GINDiA Stories';
-            renderStoryCards(cat);
-        }
-
-        function openAndPlayStory(idx) {
-            currentStoryIndex = idx;
-            currentSentenceIndex = 0;
-            const story = storiesData[idx];
-
-            document.getElementById('player-emoji').textContent = story.emoji;
-            document.getElementById('player-theme-tag').textContent = story.tag;
-            document.getElementById('player-title').textContent = currentLang === 'hi' ? story.titleHi : story.titleEn;
-            document.getElementById('player-sub').textContent = currentLang === 'hi' ? story.subHi : story.subEn;
-
-            document.getElementById('player-modal').classList.add('open');
-            document.body.style.overflow = 'hidden';
-
-            startPlayback();
-        }
-
-        function closePlayerModal() {
-            stopPlayback();
-            document.getElementById('player-modal').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        function togglePlayPause() {
-            if (isPlaying) stopPlayback();
-            else startPlayback();
-        }
-
-        function startPlayback() {
-            isPlaying = true;
-            document.getElementById('btn-play-pause').textContent = '⏸';
-            setWaveVisualizer(true);
-
-            const story = storiesData[currentStoryIndex];
-            startThemeMusic(story.musicTheme);
-            speakCurrentSentence();
-        }
-
-        function stopPlayback() {
-            isPlaying = false;
-            document.getElementById('btn-play-pause').textContent = '▶';
-            setWaveVisualizer(false);
-
-            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-            if (speechTimer) clearTimeout(speechTimer);
-            if (wordTimer) clearInterval(wordTimer);
-            stopThemeMusic();
-        }
-
-        function setWaveVisualizer(active) {
-            const bars = document.querySelectorAll('.wave-bar');
-            bars.forEach(b => b.classList.toggle('playing', active));
-        }
-
-        function renderSentenceWords(sentenceText) {
-            const container = document.getElementById('karaoke-word-container');
-            container.innerHTML = '';
-            const words = sentenceText.trim().split(/\s+/);
-
-            words.forEach((w, idx) => {
-                const span = document.createElement('span');
-                span.className = 'karaoke-word';
-                span.id = `k-word-${idx}`;
-                span.textContent = w + ' ';
-                container.appendChild(span);
-            });
-        }
-
-        function highlightWordIndex(idx) {
-            document.querySelectorAll('.karaoke-word').forEach(sp => sp.classList.remove('word-active'));
-            const activeSpan = document.getElementById(`k-word-${idx}`);
-            if (activeSpan) {
-                activeSpan.classList.add('word-active');
-            }
-        }
-
-        function speakCurrentSentence() {
-            if (!isPlaying) return;
-            const story = storiesData[currentStoryIndex];
-            const sentences = currentLang === 'hi' ? story.sentencesHi : story.sentencesEn;
-
-            if (currentSentenceIndex >= sentences.length) {
-                stopPlayback();
-                launchConfetti();
-                currentSentenceIndex = 0;
-                return;
-            }
-
-            const rawText = sentences[currentSentenceIndex];
-            renderSentenceWords(rawText);
-
-            if (!('speechSynthesis' in window)) return;
-            window.speechSynthesis.cancel();
-            if (wordTimer) clearInterval(wordTimer);
-
-            const utt = new SpeechSynthesisUtterance(rawText);
-            utt.lang = currentLang === 'hi' ? 'hi-IN' : 'en-IN';
-            utt.rate = playbackSpeed;
-
-            if (currentVoiceGender === 'female') {
-                utt.pitch = 1.08;
-            } else if (currentVoiceGender === 'male') {
-                utt.pitch = 0.85;
-            } else if (currentVoiceGender === 'child') {
-                utt.pitch = 1.45;
-                utt.rate = playbackSpeed * 1.05;
-            }
-
-            const voice = getVoiceForGender(currentLang, currentVoiceGender);
-            if (voice) utt.voice = voice;
-
-            const words = rawText.trim().split(/\s+/);
-            let boundaryTriggered = false;
-
-            utt.onboundary = (e) => {
-                if (e.name === 'word') {
-                    boundaryTriggered = true;
-                    let charCount = 0;
-                    for (let i = 0; i < words.length; i++) {
-                        charCount += words[i].length + 1;
-                        if (e.charIndex < charCount) {
-                            highlightWordIndex(i);
-                            break;
-                        }
-                    }
-                }
-            };
-
-            let wordIdx = 0;
-            const approxWordDuration = Math.max(160, Math.floor(60000 / (135 * playbackSpeed)));
-            wordTimer = setInterval(() => {
-                if (!boundaryTriggered && isPlaying && wordIdx < words.length) {
-                    highlightWordIndex(wordIdx);
-                    wordIdx++;
-                }
-            }, approxWordDuration);
-
-            utt.onend = () => {
-                if (wordTimer) clearInterval(wordTimer);
-                highlightWordIndex(words.length - 1);
-                if (!isPlaying) return;
-
-                speechTimer = setTimeout(() => {
-                    currentSentenceIndex++;
-                    speakCurrentSentence();
-                }, 220);
-            };
-
-            utt.onerror = () => {
-                if (wordTimer) clearInterval(wordTimer);
-                if (!isPlaying) return;
-                currentSentenceIndex++;
-                speakCurrentSentence();
-            };
-
-            window.speechSynthesis.speak(utt);
-        }
-
-        function prevSentence() {
-            if (currentSentenceIndex > 0) {
-                currentSentenceIndex--;
-                if (isPlaying) speakCurrentSentence();
-                else renderSentenceWords((currentLang === 'hi' ? storiesData[currentStoryIndex].sentencesHi : storiesData[currentStoryIndex].sentencesEn)[currentSentenceIndex]);
-            }
-        }
-
-        function nextSentence() {
-            const total = (currentLang === 'hi' ? storiesData[currentStoryIndex].sentencesHi : storiesData[currentStoryIndex].sentencesEn).length;
-            if (currentSentenceIndex < total - 1) {
-                currentSentenceIndex++;
-                if (isPlaying) speakCurrentSentence();
-                else renderSentenceWords((currentLang === 'hi' ? storiesData[currentStoryIndex].sentencesHi : storiesData[currentStoryIndex].sentencesEn)[currentSentenceIndex]);
-            }
-        }
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'hi' ? 'en' : 'hi';
-            document.getElementById('btn-lang').textContent = currentLang === 'hi' ? '🌐 🇮🇳 Hindi (हिन्दी)' : '🌐 🇬🇧 English';
-            const wasPlaying = isPlaying;
-            stopPlayback();
-
-            const story = storiesData[currentStoryIndex];
-            document.getElementById('player-title').textContent = currentLang === 'hi' ? story.titleHi : story.titleEn;
-            document.getElementById('player-sub').textContent = currentLang === 'hi' ? story.subHi : story.subEn;
-
-            renderStoryCards(currentCategory);
-            if (wasPlaying) startPlayback();
-        }
-
-        function cycleSpeed() {
-            if (playbackSpeed === 0.92) playbackSpeed = 1.1;
-            else if (playbackSpeed === 1.1) playbackSpeed = 0.8;
-            else playbackSpeed = 0.92;
-            document.getElementById('btn-speed').textContent = `⚡ ${playbackSpeed}x`;
-            if (isPlaying) speakCurrentSentence();
-        }
-
-        function launchConfetti() {
-            const box = document.getElementById('confetti-box');
-            const colors = ['#F26522', '#EC4899', '#8B5CF6', '#FDE047', '#10B981', '#3B82F6'];
-            for (let i = 0; i < 35; i++) {
-                const el = document.createElement('div');
-                el.className = 'confetti-dot';
-                el.style.left = Math.random() * 100 + 'vw';
-                el.style.background = colors[Math.floor(Math.random() * colors.length)];
-                el.style.width = el.style.height = (6 + Math.random() * 8) + 'px';
-                el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-                el.style.animationDuration = (1.5 + Math.random() * 2) + 's';
-                box.appendChild(el);
-                setTimeout(() => el.remove(), 3500);
-            }
-        }
-
-        renderStoryCards('all');
-    </script>
 </body>
 </html>
