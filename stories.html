@@ -2,10 +2,10 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuku FM Audio Stories | सस्पेंस, प्रेरणा व नैतिक कहानियाँ | GINDiA Social</title>
-    <meta name="description" content="Listen to Kuku FM style audio stories in Hindi and English on GINDiA Social. Suspense, thriller, moral, Akbar Birbal, and inspiring tales with real human voice narration." />
-    <meta name="keywords" content="audio stories hindi, kuku fm style stories, suspense audio stories hindi, moral stories online hindi english, gindia social stories" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>GINDiA Audio Stories | सस्पेंस, प्रेरणा व ऐतिहासिक कहानियाँ | GINDiA Social</title>
+    <meta name="description" content="Listen to GINDiA Audio Stories on GINDiA Social. Thrilling mysteries, moral folktales, Akbar-Birbal wit and inspiring success journeys with word-by-word karaoke highlight and natural voice choices." />
+    <meta name="keywords" content="gindia audio stories, hindi suspense stories online, inspirational stories audio, real voice audio story india" />
     <link rel="canonical" href="https://social.gindiahr.com/stories.html" />
     <link rel="icon" type="image/png" href="https://gindiahr.com/images/logo/logo.png">
 
@@ -15,21 +15,27 @@
         :root {
             --orange: #F26522;
             --insta: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            --dark: #0F172A;
+            --dark: #0B0F19;
+            --surface: #141B2D;
+            --surface-card: #1D263B;
             --purple: #8B5CF6;
             --pink: #EC4899;
             --sub: #94A3B8;
+            --highlight-word: #F26522;
+            --highlight-bg: rgba(242, 101, 34, 0.28);
             --border: rgba(255, 255, 255, 0.12);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #0B0F19 0%, #161F36 50%, #0B0F19 100%);
+            background: var(--dark);
             color: #F8FAFC;
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
         a { text-decoration: none; color: inherit; }
 
@@ -45,11 +51,11 @@
         .topbar a { color: var(--orange); font-weight: 600; }
 
         nav {
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
-            padding: 0 24px;
-            height: 64px;
+            padding: 0 20px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -62,17 +68,17 @@
             align-items: center;
             gap: 10px;
             font-family: 'Poppins', sans-serif;
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 900;
             color: #FFF;
         }
         .nav-logo span { color: var(--orange); }
-        .nav-links { display: flex; gap: 10px; }
+        .nav-links { display: flex; gap: 8px; }
         .nav-btn {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             color: #E2E8F0;
-            padding: 6px 14px;
+            padding: 6px 12px;
             border-radius: 50px;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid var(--border);
@@ -80,379 +86,467 @@
         }
         .nav-btn:hover { background: var(--insta); color: #FFF; border-color: transparent; }
 
-        /* HERO */
-        .hero {
-            padding: 44px 20px 28px;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
+        /* CATEGORY SCROLLER */
+        .category-scroll-wrap {
+            padding: 12px 16px 8px;
+            background: #0F172A;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: sticky;
+            top: 60px;
+            z-index: 90;
         }
-        .brand-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(242, 101, 34, 0.15);
-            border: 1px solid rgba(242, 101, 34, 0.35);
-            color: var(--orange);
-            font-size: 13px;
-            font-weight: 800;
-            padding: 6px 18px;
-            border-radius: 50px;
-            margin-bottom: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .hero h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 38px;
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, #FFF 30%, #FDE047 70%, #F26522 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero p {
-            font-size: 15px;
-            color: var(--sub);
-            max-width: 620px;
-            margin: 0 auto 24px;
-            line-height: 1.6;
-        }
-
-        /* CATEGORY FILTER */
-        .cat-bar {
+        .category-scroll {
             display: flex;
-            justify-content: center;
             gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-            padding: 0 16px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding-bottom: 4px;
         }
-        .cat-pill {
+        .category-scroll::-webkit-scrollbar { display: none; }
+        .cat-chip {
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.14);
             color: #CBD5E1;
-            padding: 8px 18px;
+            padding: 8px 16px;
             border-radius: 50px;
             font-size: 13px;
             font-weight: 700;
+            white-space: nowrap;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
-        .cat-pill:hover, .cat-pill.active {
+        .cat-chip:hover, .cat-chip.active {
             background: var(--insta);
             color: #FFF;
             border-color: transparent;
-            box-shadow: 0 4px 16px rgba(220, 39, 67, 0.4);
+            box-shadow: 0 4px 14px rgba(220, 39, 67, 0.4);
+            transform: scale(1.03);
         }
 
-        /* STORY GRID */
-        .story-grid {
-            max-width: 1100px;
+        /* MAIN CONTENT */
+        .content-wrap {
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 0 20px 48px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 22px;
+            padding: 16px;
             width: 100%;
+            flex: 1;
         }
-        .story-card {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid var(--border);
-            border-radius: 22px;
-            padding: 24px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .section-header-row {
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: space-between;
+            margin-bottom: 14px;
+        }
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 19px;
+            font-weight: 800;
+            color: #FFF;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .story-count-badge {
+            background: rgba(242, 101, 34, 0.2);
+            color: var(--orange);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+
+        /* STORIES GRID */
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 14px;
+        }
+        .story-card-native {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-        }
-        .story-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-            background: var(--insta);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .story-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(242, 101, 34, 0.5);
-            background: rgba(49, 46, 129, 0.5);
-            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
-        }
-        .story-card:hover::before { opacity: 1; }
-
-        .story-head {
             display: flex;
             gap: 14px;
-            align-items: flex-start;
-            margin-bottom: 12px;
+            align-items: center;
         }
-        .story-icon {
-            width: 60px;
-            height: 60px;
+        .story-card-native:hover {
+            transform: translateY(-3px);
+            background: var(--surface-card);
+            border-color: var(--orange);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+        .story-card-native::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; bottom: 0;
+            width: 4px;
+            background: var(--insta);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .story-card-native:hover::after { opacity: 1; }
+
+        .story-thumb {
+            width: 72px;
+            height: 72px;
             border-radius: 16px;
             background: var(--insta);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
+            font-size: 34px;
             flex-shrink: 0;
-            box-shadow: 0 6px 16px rgba(220, 39, 67, 0.3);
+            box-shadow: 0 6px 16px rgba(220, 39, 67, 0.35);
         }
-        .story-badge {
-            font-size: 11px;
+        .story-info { flex: 1; min-width: 0; }
+        .story-tag-pill {
+            font-size: 10px;
             font-weight: 800;
             color: #FDE047;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
-        .story-title {
+        .story-name {
             font-family: 'Baloo 2', cursive;
-            font-size: 20px;
+            font-size: 17px;
             font-weight: 800;
             color: #FFF;
             line-height: 1.25;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        .story-sub {
+        .story-subtitle {
             font-size: 12px;
-            color: #CBD5E1;
-            margin-top: 2px;
-        }
-        .story-desc {
-            font-size: 13px;
             color: var(--sub);
-            line-height: 1.6;
-            margin-bottom: 18px;
-            flex: 1;
+            margin-top: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        .story-btn {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: #FDE047;
-            font-size: 13px;
-            font-weight: 800;
-            padding: 10px 16px;
-            border-radius: 12px;
+        .story-play-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(242, 101, 34, 0.2);
+            color: var(--orange);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            font-size: 16px;
+            flex-shrink: 0;
             transition: all 0.2s;
+            border: 1px solid rgba(242, 101, 34, 0.3);
         }
-        .story-card:hover .story-btn {
-            background: var(--insta);
+        .story-card-native:hover .story-play-icon {
+            background: var(--orange);
             color: #FFF;
-            border-color: transparent;
-            box-shadow: 0 4px 14px rgba(220, 39, 67, 0.4);
+            transform: scale(1.1);
         }
 
-        /* MODAL / KUKU FM AUDIO PLAYER */
-        .modal-overlay {
+        /* ──── ANDROID FULLSCREEN ZERO-SCROLL PLAYER MODAL ──── */
+        .player-modal {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
             z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            background: #0B0F19;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            animation: slideUp 0.28s ease-out;
         }
-        .modal-overlay.open { display: flex; }
-        .modal-content {
-            background: linear-gradient(135deg, #1E1B4B, #0F172A);
-            border: 2px solid rgba(242, 101, 34, 0.5);
-            border-radius: 28px;
-            padding: 28px 24px;
-            max-width: 660px;
-            width: 100%;
-            position: relative;
-            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7);
-            animation: modalPop 0.3s ease;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        @keyframes modalPop {
-            from { transform: scale(0.92); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        .modal-close {
-            position: absolute;
-            top: 18px;
-            right: 18px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: #CBD5E1;
-            font-size: 18px;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-        .modal-close:hover { background: #EF4444; color: #FFF; }
-
-        .kuku-live-top {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-        .kuku-live-icon {
-            width: 72px;
-            height: 72px;
-            border-radius: 20px;
-            background: var(--insta);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 38px;
-            box-shadow: 0 8px 24px rgba(220, 39, 67, 0.4);
-            flex-shrink: 0;
-            animation: bobIcon 3s ease-in-out infinite;
-        }
-        @keyframes bobIcon {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        .kuku-live-title {
-            font-family: 'Baloo 2', cursive;
-            font-size: 24px;
-            font-weight: 800;
-            color: #FDE047;
-            line-height: 1.2;
-        }
-        .kuku-live-tag {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--orange);
-            text-transform: uppercase;
-        }
-        .kuku-live-sub { font-size: 13px; color: #CBD5E1; }
-
-        .kuku-karaoke-box {
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 16px;
-            min-height: 140px;
-            max-height: 220px;
-            overflow-y: auto;
-            margin-bottom: 18px;
-        }
-        .kuku-karaoke-item {
-            font-size: 16px;
-            line-height: 1.8;
-            color: var(--sub);
-            padding: 6px 10px;
-            border-radius: 8px;
-            margin-bottom: 6px;
-            transition: all 0.25s ease;
-            cursor: pointer;
-        }
-        .kuku-karaoke-item:hover { color: #CBD5E1; background: rgba(255, 255, 255, 0.05); }
-        .kuku-karaoke-item.active {
-            color: #FFF;
-            background: rgba(242, 101, 34, 0.25);
-            border-left: 3px solid var(--orange);
-            font-weight: 700;
-            text-shadow: 0 0 12px rgba(242, 101, 34, 0.5);
+        .player-modal.open { display: flex; }
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        .kuku-actions-bar {
+        .player-appbar {
+            height: 54px;
+            padding: 0 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 8px;
-            flex-wrap: wrap;
+            background: rgba(15, 23, 42, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            flex-shrink: 0;
         }
-        .kuku-main-play {
-            background: var(--insta);
-            color: #FFF;
+        .player-back-btn {
+            background: rgba(255, 255, 255, 0.1);
             border: none;
-            width: 52px;
-            height: 52px;
+            color: #FFF;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
+            font-size: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
             cursor: pointer;
-            box-shadow: 0 8px 24px rgba(220, 39, 67, 0.45);
-            transition: all 0.2s;
         }
-        .kuku-main-play:hover { transform: scale(1.08); }
-        .kuku-ctrl-btn {
-            background: rgba(255, 255, 255, 0.1);
+        .player-header-title {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
             color: #E2E8F0;
-            border: 1px solid var(--border);
-            padding: 8px 16px;
+        }
+        .player-header-badge {
+            font-size: 10px;
+            color: var(--orange);
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* MIDDLE PLAYER BODY */
+        .player-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 12px 16px;
+            overflow: hidden;
+            justify-content: space-evenly;
+            align-items: center;
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .player-art-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+        }
+        .player-art-glow {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(242, 101, 34, 0.4) 0%, transparent 70%);
+            animation: pulseGlow 3s ease-in-out infinite alternate;
+        }
+        @keyframes pulseGlow {
+            0% { transform: scale(0.9); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 0.9; }
+        }
+        .player-art-circle {
+            width: 76px;
+            height: 76px;
+            border-radius: 22px;
+            background: var(--insta);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 8px 24px rgba(220, 39, 67, 0.45);
+            position: relative;
+            z-index: 1;
+            animation: artBob 3s ease-in-out infinite;
+        }
+        @keyframes artBob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .wave-visualizer {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            height: 20px;
+            margin: 4px 0 8px;
+        }
+        .wave-bar {
+            width: 3px;
+            height: 6px;
+            background: var(--orange);
+            border-radius: 2px;
+            transition: height 0.15s ease;
+        }
+        .wave-bar.playing {
+            animation: waveBounce 0.8s ease-in-out infinite alternate;
+        }
+        .wave-bar:nth-child(2) { animation-delay: 0.1s; height: 12px; background: #EC4899; }
+        .wave-bar:nth-child(3) { animation-delay: 0.25s; height: 18px; background: #FDE047; }
+        .wave-bar:nth-child(4) { animation-delay: 0.15s; height: 10px; background: #8B5CF6; }
+        .wave-bar:nth-child(5) { animation-delay: 0.3s; height: 14px; background: var(--orange); }
+        @keyframes waveBounce {
+            0% { height: 4px; }
+            100% { height: 18px; }
+        }
+
+        .player-story-name {
+            font-family: 'Baloo 2', cursive;
+            font-size: 20px;
+            font-weight: 800;
+            color: #FDE047;
+            line-height: 1.2;
+            margin-bottom: 2px;
+        }
+        .player-story-theme {
+            font-size: 12px;
+            color: #CBD5E1;
+            margin-bottom: 8px;
+        }
+
+        /* WORD-BY-WORD KARAOKE BOX */
+        .karaoke-word-box {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1.5px solid rgba(242, 101, 34, 0.4);
+            border-radius: 16px;
+            padding: 12px 14px;
+            width: 100%;
+            min-height: 90px;
+            max-height: 130px;
+            overflow-y: auto;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #94A3B8;
+            text-align: left;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.4);
+        }
+        .karaoke-word {
+            display: inline-block;
+            padding: 1px 3px;
+            border-radius: 4px;
+            transition: all 0.12s ease;
+        }
+        .karaoke-word.word-active {
+            color: #FFFFFF !important;
+            background: var(--highlight-bg) !important;
+            border-bottom: 2px solid var(--highlight-word) !important;
+            font-weight: 800 !important;
+            transform: scale(1.06);
+            text-shadow: 0 0 10px rgba(242, 101, 34, 0.7);
+        }
+
+        .player-voice-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .voice-pill {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            color: #E2E8F0;
+            padding: 5px 10px;
             border-radius: 50px;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s;
         }
-        .kuku-ctrl-btn:hover { background: rgba(255, 255, 255, 0.2); color: #FFF; }
+        .voice-pill.active {
+            background: var(--insta);
+            color: #FFF;
+            border-color: transparent;
+            box-shadow: 0 2px 8px rgba(220, 39, 67, 0.4);
+        }
+
+        /* BOTTOM FIXED PLAYBACK CONTROLS SHEET */
+        .player-bottom-sheet {
+            background: #111827;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 10px 16px 14px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .player-main-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            max-width: 480px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .btn-ctrl-sec {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #E2E8F0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-ctrl-sec:hover { background: rgba(255, 255, 255, 0.2); }
+        .btn-ctrl-play {
+            background: var(--insta);
+            border: none;
+            color: #FFF;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5);
+            transition: all 0.2s;
+        }
+        .btn-ctrl-play:hover { transform: scale(1.08); }
+        .player-sub-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 480px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .btn-pill-sub {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #CBD5E1;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
 
         /* CONFETTI */
-        #confetti-box { position: fixed; inset: 0; pointer-events: none; z-index: 10000; }
+        #confetti-box { position: fixed; inset: 0; pointer-events: none; z-index: 100000; }
         .confetti-dot { position: absolute; top: -10px; animation: confettiDrop ease-in forwards; }
         @keyframes confettiDrop { to { transform: translateY(105vh) rotate(720deg); opacity: 0; } }
 
         /* FOOTER */
         footer {
-            margin-top: auto;
-            border-top: 1px solid var(--border);
-            padding: 28px 20px;
-            text-align: center;
-            font-size: 13px;
-            color: var(--sub);
             background: #080C16;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 20px 16px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--sub);
+            margin-top: auto;
         }
-        footer a { color: var(--orange); font-weight: 700; }
-
-        /* MOBILE ZERO-SCROLL MODAL */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 28px; }
-            .hero p { font-size: 13px; }
-            .story-grid { grid-template-columns: 1fr; padding: 0 16px 32px; }
-
-            .modal-overlay {
-                padding: 0 !important;
-                inset: 0 !important;
-                background: #0F172A !important;
-            }
-            .modal-content {
-                width: 100vw !important;
-                height: 100vh !important;
-                height: 100dvh !important;
-                max-width: 100vw !important;
-                max-height: 100vh !important;
-                max-height: 100dvh !important;
-                border-radius: 0 !important;
-                margin: 0 !important;
-                padding: 16px !important;
-                display: flex !important;
-                flex-direction: column !important;
-                justify-content: space-between !important;
-                box-sizing: border-box !important;
-            }
-            .kuku-live-icon { width: 56px !important; height: 56px !important; font-size: 28px !important; }
-            .kuku-live-title { font-size: 20px !important; }
-            .kuku-karaoke-box { min-height: 110px !important; max-height: 160px !important; font-size: 14px !important; }
-            .modal-close { top: 12px !important; right: 12px !important; }
-        }
+        footer a { color: var(--orange); text-decoration: none; font-weight: 700; }
     </style>
 </head>
 <body>
@@ -463,6 +557,7 @@
         Part of <strong>GIndiaHR Group</strong> • Patna, Bihar | <a href="index.html">Follow Our Social Channels ↗</a>
     </div>
 
+    <!-- APP HEADER -->
     <nav>
         <a href="index.html" class="nav-logo">
             <span>GINDiA</span> Stories Hub
@@ -470,71 +565,104 @@
         <div class="nav-links">
             <a href="index.html" class="nav-btn">📱 Social Hub</a>
             <a href="https://kids.gindiahr.com/stories.html" class="nav-btn">🧒 Kids Stories</a>
-            <a href="https://game.gindiahr.com" class="nav-btn">🎮 Play Games</a>
+            <a href="https://game.gindiahr.com" class="nav-btn">🎮 Games</a>
         </div>
     </nav>
 
-    <div class="hero">
-        <div class="brand-badge">🎙️ Kuku FM Audio Stories</div>
-        <h1>रोमांचक, सस्पेंस व प्रेरणादायक कहानियाँ</h1>
-        <p>Listen to thrilling mysteries, moral folktales, Akbar-Birbal wit and real-life inspirational journeys narrated in human Hindi & English with live subtitles & ambient music!</p>
-
-        <div class="cat-bar">
-            <button class="cat-pill active" onclick="filterStories('all', this)">✨ All (सभी)</button>
-            <button class="cat-pill" onclick="filterStories('suspense', this)">🕵️ Suspense & Mystery (सस्पेंस)</button>
-            <button class="cat-pill" onclick="filterStories('inspirational', this)">🚀 Inspiration & Success (प्रेरणा)</button>
-            <button class="cat-pill" onclick="filterStories('moral', this)">⭐ Moral & Wit (शिक्षाप्रद)</button>
-            <button class="cat-pill" onclick="filterStories('legend', this)">🏺 Indian Legends (प्राचीन गाथाएं)</button>
+    <!-- HORIZONTAL CATEGORY SCROLLER -->
+    <div class="category-scroll-wrap">
+        <div class="category-scroll">
+            <div class="cat-chip active" onclick="selectCategory('all', this)">✨ All (सभी)</div>
+            <div class="cat-chip" onclick="selectCategory('suspense', this)">🕵️ सस्पेंस व थ्रिलर (Mystery)</div>
+            <div class="cat-chip" onclick="selectCategory('inspirational', this)">🚀 प्रेरणा व सफलता (Inspiration)</div>
+            <div class="cat-chip" onclick="selectCategory('legend', this)">🏺 प्राचीन गाथाएं (Legends)</div>
+            <div class="cat-chip" onclick="selectCategory('moral', this)">👑 अकबर-बीरबल व न्याय (Wit)</div>
         </div>
     </div>
 
-    <div class="story-grid" id="social-story-grid">
-        <!-- Rendered via JS -->
-    </div>
+    <!-- MAIN CONTENT -->
+    <main class="content-wrap">
+        <div class="section-header-row">
+            <div class="section-title">
+                <span id="category-heading-text">📚 All GINDiA Stories</span>
+                <span class="story-count-badge" id="story-count-display">4 Stories</span>
+            </div>
+        </div>
 
-    <!-- AUDIO STORY MODAL -->
-    <div class="modal-overlay" id="story-modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeStoryModal()">✕</button>
+        <div class="story-grid" id="story-list-grid"></div>
+    </main>
 
-            <div>
-                <div class="kuku-live-top">
-                    <div class="kuku-live-icon" id="modal-story-icon">🕵️</div>
-                    <div>
-                        <div class="kuku-live-tag" id="modal-story-tag">सस्पेंस व थ्रिलर • Mystery</div>
-                        <div class="kuku-live-title" id="modal-story-title">रात के बारह बजे की दस्तक</div>
-                        <div class="kuku-live-sub" id="modal-story-sub">The Midnight Knock on Highway 31</div>
-                    </div>
-                </div>
+    <!-- ANDROID FULLSCREEN ZERO-SCROLL PLAYER MODAL -->
+    <div class="player-modal" id="player-modal">
+        <!-- TOP APPBAR -->
+        <div class="player-appbar">
+            <button class="player-back-btn" onclick="closePlayerModal()">←</button>
+            <div class="player-header-title">
+                <span class="player-header-badge" id="player-badge">GINDiA AUDIO STORY</span>
+                <span id="player-theme-tag">Mystery</span>
+            </div>
+            <button class="player-back-btn" onclick="closePlayerModal()">✕</button>
+        </div>
 
-                <!-- LIVE KARAOKE AREA -->
-                <div class="kuku-karaoke-box" id="modal-karaoke-area"></div>
+        <!-- MIDDLE BODY (ARTWORK & WORD-BY-WORD KARAOKE) -->
+        <div class="player-body">
+            <div class="player-art-wrap">
+                <div class="player-art-glow"></div>
+                <div class="player-art-circle" id="player-emoji">🕵️</div>
             </div>
 
-            <!-- CONTROLS BAR -->
-            <div class="kuku-actions-bar">
-                <button class="kuku-ctrl-btn" onclick="toggleLang()" id="btn-lang-toggle">🌐 🇮🇳 Hindi (हिन्दी)</button>
-                <div style="display:flex; align-items:center; gap:10px;">
-                    <button class="kuku-ctrl-btn" onclick="prevSentence()" title="Previous Sentence">⏮️</button>
-                    <button class="kuku-main-play" id="btn-play-toggle" onclick="togglePlay()">▶</button>
-                    <button class="kuku-ctrl-btn" onclick="nextSentence()" title="Next Sentence">⏭️</button>
-                </div>
-                <button class="kuku-ctrl-btn" onclick="cycleSpeed()" id="btn-speed-toggle">⚡ 0.9x</button>
-                <button class="kuku-ctrl-btn" onclick="toggleMusic()" id="btn-music-toggle">🎵 Music: ON</button>
+            <div class="wave-visualizer" id="wave-visualizer">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+            </div>
+
+            <div>
+                <div class="player-story-name" id="player-title">रात के बारह बजे की दस्तक</div>
+                <div class="player-story-theme" id="player-sub">The Midnight Knock on Highway 31</div>
+            </div>
+
+            <!-- REAL-TIME WORD-BY-WORD KARAOKE TEXT BOX -->
+            <div class="karaoke-word-box" id="karaoke-word-container"></div>
+
+            <!-- VOICE SELECTOR ROW (FEMALE, MALE, CHILD) -->
+            <div class="player-voice-row">
+                <span style="font-size:11px; color:#CBD5E1; font-weight:700;">आवाज़ (Voice):</span>
+                <button class="voice-pill active" id="voice-btn-female" onclick="setVoiceGender('female')">👩 Female (महिला)</button>
+                <button class="voice-pill" id="voice-btn-male" onclick="setVoiceGender('male')">👨 Male (पुरुष)</button>
+                <button class="voice-pill" id="voice-btn-child" onclick="setVoiceGender('child')">🧒 Child (बच्चा)</button>
+            </div>
+        </div>
+
+        <!-- BOTTOM FIXED PLAYBACK CONTROLS SHEET (ZERO SCROLL) -->
+        <div class="player-bottom-sheet">
+            <div class="player-main-controls">
+                <button class="btn-ctrl-sec" onclick="prevSentence()" title="Previous line">⏮️</button>
+                <button class="btn-ctrl-play" id="btn-play-pause" onclick="togglePlayPause()">▶</button>
+                <button class="btn-ctrl-sec" onclick="nextSentence()" title="Next line">⏭️</button>
+            </div>
+
+            <div class="player-sub-controls">
+                <button class="btn-pill-sub" id="btn-lang" onclick="toggleLanguage()">🌐 🇮🇳 Hindi (हिन्दी)</button>
+                <button class="btn-pill-sub" id="btn-speed" onclick="cycleSpeed()">⚡ 0.9x</button>
+                <button class="btn-pill-sub" id="btn-music" onclick="toggleMusic()">🎵 Bg Music: ON</button>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2025 GINDiA Social Stories | Part of <a href="https://gindiahr.com">GIndiaHR Group</a> • Patna, Bihar<br>
-        Viral audio stories in Hindi • Thrilling podcast series • Motivational tales • Free social stories hub</p>
+        <p>© 2025 GINDiA Stories | Part of <a href="https://gindiahr.com">GIndiaHR Group</a> • Patna, Bihar<br>
+        100% Free Engaging Audio Stories & Podcast Series | Real Voice & Live Word Karaoke</p>
     </footer>
 
     <script>
-        const stories = [
+        const storiesData = [
             {
                 id: 'midnight_knock',
                 cat: 'suspense',
+                musicTheme: 'suspense',
                 emoji: '🕵️',
                 tag: 'सस्पेंस व थ्रिलर • Mystery',
                 titleHi: 'रात के बारह बजे की दस्तक',
@@ -574,6 +702,7 @@
             {
                 id: 'patna_to_stars',
                 cat: 'inspirational',
+                musicTheme: 'inspirational',
                 emoji: '🚀',
                 tag: 'प्रेरणा व सफलता • True Grit',
                 titleHi: 'हौसलों की उड़ान — पटना से अंतरिक्ष तक',
@@ -605,6 +734,7 @@
             {
                 id: 'philosopher_stone',
                 cat: 'legend',
+                musicTheme: 'moral',
                 emoji: '🏺',
                 tag: 'प्राचीन रहस्य • Folk Legend',
                 titleHi: 'अनोखा पारस पत्थर और लालची व्यापारी',
@@ -637,6 +767,7 @@
             {
                 id: 'golden_urn',
                 cat: 'moral',
+                musicTheme: 'inspirational',
                 emoji: '👑',
                 tag: 'अकबर-बीरबल • Royal Wit',
                 titleHi: 'सोने के घड़े का रहस्य और बीरबल का न्याय',
@@ -669,19 +800,28 @@
             }
         ];
 
-        let activeStoryIdx = 0;
-        let activeSentenceIdx = 0;
-        let activeLang = 'hi';
+        let currentCategory = 'all';
+        let currentStoryIndex = 0;
+        let currentSentenceIndex = 0;
+        let currentLang = 'hi';
+        let currentVoiceGender = 'female';
         let playbackSpeed = 0.92;
         let isPlaying = false;
         let speechTimer = null;
+        let wordTimer = null;
 
-        // Ambient Audio
         let audioCtx = null;
         let gainNode = null;
         let isMusicEnabled = true;
 
-        function startMusic() {
+        const musicFrequencies = {
+            suspense: [73.42, 110.00, 146.83, 220.00],
+            moral: [130.81, 164.81, 196.00, 261.63],
+            inspirational: [174.61, 220.00, 261.63, 349.23],
+            legend: [110.00, 164.81, 220.00, 277.18]
+        };
+
+        function startThemeMusic(theme = 'moral') {
             try {
                 if (!isMusicEnabled) return;
                 const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -691,16 +831,19 @@
                 if (gainNode) return;
 
                 gainNode = audioCtx.createGain();
-                gainNode.gain.setValueAtTime(0.035, audioCtx.currentTime);
+                gainNode.gain.setValueAtTime(0.032, audioCtx.currentTime);
                 gainNode.connect(audioCtx.destination);
 
-                [130.81, 164.81, 196.00, 261.63].forEach(f => {
+                const freqs = musicFrequencies[theme] || musicFrequencies.moral;
+                freqs.forEach(f => {
                     const osc = audioCtx.createOscillator();
-                    osc.type = 'sine';
+                    osc.type = theme === 'suspense' ? 'triangle' : 'sine';
                     osc.frequency.setValueAtTime(f, audioCtx.currentTime);
+
                     const filter = audioCtx.createBiquadFilter();
                     filter.type = 'lowpass';
-                    filter.frequency.setValueAtTime(450, audioCtx.currentTime);
+                    filter.frequency.setValueAtTime(theme === 'suspense' ? 320 : 480, audioCtx.currentTime);
+
                     osc.connect(filter);
                     filter.connect(gainNode);
                     osc.start();
@@ -708,211 +851,310 @@
             } catch(e) {}
         }
 
-        function stopMusic() {
+        function stopThemeMusic() {
             try {
                 if (gainNode && audioCtx) {
-                    gainNode.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 0.4);
-                    setTimeout(() => { gainNode = null; }, 450);
+                    gainNode.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 0.35);
+                    setTimeout(() => { gainNode = null; }, 400);
                 }
             } catch(e) {}
         }
 
         function toggleMusic() {
             isMusicEnabled = !isMusicEnabled;
-            document.getElementById('btn-music-toggle').textContent = isMusicEnabled ? '🎵 Music: ON' : '🔇 Music: OFF';
-            if (isMusicEnabled && isPlaying) startMusic();
-            else stopMusic();
+            document.getElementById('btn-music').textContent = isMusicEnabled ? '🎵 Bg Music: ON' : '🔇 Bg Music: OFF';
+            if (isMusicEnabled && isPlaying) {
+                const story = storiesData[currentStoryIndex];
+                startThemeMusic(story.musicTheme);
+            } else {
+                stopThemeMusic();
+            }
         }
 
-        function getVoice(lang) {
+        function getVoiceForGender(lang, gender) {
             const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
             if (!voices || voices.length === 0) return null;
+
             if (lang === 'hi') {
-                return voices.find(v => v.lang.startsWith('hi') || v.name.includes('Hindi') || v.name.includes('हिन्दी') || v.name.includes('Kalpana') || v.name.includes('Hemant') || v.name.includes('Google हिन्दी')) || voices[0];
+                const hi = voices.filter(v => v.lang.startsWith('hi') || v.name.includes('Hindi') || v.name.includes('हिन्दी'));
+                if (hi.length > 0) {
+                    if (gender === 'female') {
+                        const f = hi.find(v => v.name.includes('Kalpana') || v.name.includes('Female') || v.name.includes('Google हिन्दी'));
+                        if (f) return f;
+                    } else if (gender === 'male') {
+                        const m = hi.find(v => v.name.includes('Hemant') || v.name.includes('Male'));
+                        if (m) return m;
+                    }
+                    return hi[0];
+                }
             }
-            return voices.find(v => v.lang === 'en-IN' || v.name.includes('India') || v.name.includes('Zira') || v.name.includes('Natural') || v.name.includes('Google UK English Female') || v.lang.startsWith('en')) || voices[0];
+
+            const en = voices.filter(v => v.lang === 'en-IN' || v.name.includes('India'));
+            if (en.length > 0) {
+                if (gender === 'female') {
+                    const f = en.find(v => v.name.includes('Female') || v.name.includes('Heera') || v.name.includes('Zira'));
+                    if (f) return f;
+                } else if (gender === 'male') {
+                    const m = en.find(v => v.name.includes('Male') || v.name.includes('Ravi') || v.name.includes('David'));
+                    if (m) return m;
+                }
+                return en[0];
+            }
+
+            return voices.find(v => v.lang.startsWith('en')) || voices[0];
         }
 
-        function renderStories(filter = 'all') {
-            const grid = document.getElementById('social-story-grid');
-            grid.innerHTML = '';
-            const list = filter === 'all' ? stories : stories.filter(s => s.cat === filter || filter === 'all');
+        function setVoiceGender(g) {
+            currentVoiceGender = g;
+            ['female', 'male', 'child'].forEach(id => {
+                const btn = document.getElementById(`voice-btn-${id}`);
+                if (btn) btn.classList.toggle('active', id === g);
+            });
+            if (isPlaying) speakCurrentSentence();
+        }
 
-            list.forEach((s, idx) => {
-                const originalIdx = stories.indexOf(s);
+        function renderStoryCards(cat = 'all') {
+            const grid = document.getElementById('story-list-grid');
+            grid.innerHTML = '';
+            const filtered = cat === 'all' ? storiesData : storiesData.filter(s => s.cat === cat);
+
+            document.getElementById('story-count-display').textContent = `${filtered.length} Stories`;
+
+            filtered.forEach(story => {
+                const realIdx = storiesData.indexOf(story);
                 const card = document.createElement('div');
-                card.className = 'story-card';
+                card.className = 'story-card-native';
                 card.innerHTML = `
-                    <div>
-                        <div class="story-head">
-                            <div class="story-icon">${s.emoji}</div>
-                            <div>
-                                <div class="story-badge">${s.tag}</div>
-                                <div class="story-title">${activeLang === 'hi' ? s.titleHi : s.titleEn}</div>
-                                <div class="story-sub">${activeLang === 'hi' ? s.subHi : s.subEn}</div>
-                            </div>
-                        </div>
-                        <div class="story-desc">${s.preview}</div>
+                    <div class="story-thumb">${story.emoji}</div>
+                    <div class="story-info">
+                        <div class="story-tag-pill">${story.tag}</div>
+                        <div class="story-name">${currentLang === 'hi' ? story.titleHi : story.titleEn}</div>
+                        <div class="story-subtitle">${currentLang === 'hi' ? story.subHi : story.subEn}</div>
                     </div>
-                    <div class="story-btn">🎧 Listen Full Story (सुनें) ▶</div>
+                    <div class="story-play-icon">▶</div>
                 `;
-                card.onclick = () => openStory(originalIdx);
+                card.onclick = () => openAndPlayStory(realIdx);
                 grid.appendChild(card);
             });
         }
 
-        function filterStories(cat, btn) {
-            if (btn) {
-                document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+        function selectCategory(cat, chip) {
+            currentCategory = cat;
+            if (chip) {
+                document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
             }
-            renderStories(cat);
+            const catNames = {
+                all: '📚 All GINDiA Stories',
+                suspense: '🕵️ सस्पेंस व थ्रिलर (Mystery Stories)',
+                inspirational: '🚀 प्रेरणा व सफलता (Inspirational Stories)',
+                legend: '🏺 प्राचीन गाथाएं (Legends)',
+                moral: '👑 अकबर-बीरबल व न्याय (Wit Stories)'
+            };
+            document.getElementById('category-heading-text').textContent = catNames[cat] || '📚 GINDiA Stories';
+            renderStoryCards(cat);
         }
 
-        function openStory(idx) {
-            activeStoryIdx = idx;
-            activeSentenceIdx = 0;
-            const story = stories[idx];
-            document.getElementById('modal-story-icon').textContent = story.emoji;
-            document.getElementById('modal-story-tag').textContent = story.tag;
-            document.getElementById('modal-story-title').textContent = activeLang === 'hi' ? story.titleHi : story.titleEn;
-            document.getElementById('modal-story-sub').textContent = activeLang === 'hi' ? story.subHi : story.subEn;
+        function openAndPlayStory(idx) {
+            currentStoryIndex = idx;
+            currentSentenceIndex = 0;
+            const story = storiesData[idx];
 
-            renderKaraoke();
-            document.getElementById('story-modal').classList.add('open');
+            document.getElementById('player-emoji').textContent = story.emoji;
+            document.getElementById('player-theme-tag').textContent = story.tag;
+            document.getElementById('player-title').textContent = currentLang === 'hi' ? story.titleHi : story.titleEn;
+            document.getElementById('player-sub').textContent = currentLang === 'hi' ? story.subHi : story.subEn;
+
+            document.getElementById('player-modal').classList.add('open');
             document.body.style.overflow = 'hidden';
-            startPlay();
+
+            startPlayback();
         }
 
-        function closeStoryModal() {
-            stopPlay();
-            document.getElementById('story-modal').classList.remove('open');
+        function closePlayerModal() {
+            stopPlayback();
+            document.getElementById('player-modal').classList.remove('open');
             document.body.style.overflow = '';
         }
 
-        function renderKaraoke() {
-            const area = document.getElementById('modal-karaoke-area');
-            const story = stories[activeStoryIdx];
-            const list = activeLang === 'hi' ? story.sentencesHi : story.sentencesEn;
-            area.innerHTML = '';
-
-            list.forEach((st, idx) => {
-                const p = document.createElement('div');
-                p.className = 'kuku-karaoke-item' + (idx === activeSentenceIdx ? ' active' : '');
-                p.id = `karaoke-line-${idx}`;
-                p.textContent = st;
-                p.onclick = () => {
-                    activeSentenceIdx = idx;
-                    renderKaraoke();
-                    if (isPlaying) speakSentence();
-                };
-                area.appendChild(p);
-            });
-
-            const activeLine = document.getElementById(`karaoke-line-${activeSentenceIdx}`);
-            if (activeLine) activeLine.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        function togglePlayPause() {
+            if (isPlaying) stopPlayback();
+            else startPlayback();
         }
 
-        function togglePlay() {
-            if (isPlaying) stopPlay();
-            else startPlay();
-        }
-
-        function startPlay() {
+        function startPlayback() {
             isPlaying = true;
-            document.getElementById('btn-play-toggle').textContent = '⏸';
-            startMusic();
-            speakSentence();
+            document.getElementById('btn-play-pause').textContent = '⏸';
+            setWaveVisualizer(true);
+
+            const story = storiesData[currentStoryIndex];
+            startThemeMusic(story.musicTheme);
+            speakCurrentSentence();
         }
 
-        function stopPlay() {
+        function stopPlayback() {
             isPlaying = false;
-            document.getElementById('btn-play-toggle').textContent = '▶';
+            document.getElementById('btn-play-pause').textContent = '▶';
+            setWaveVisualizer(false);
+
             if ('speechSynthesis' in window) window.speechSynthesis.cancel();
             if (speechTimer) clearTimeout(speechTimer);
-            stopMusic();
+            if (wordTimer) clearInterval(wordTimer);
+            stopThemeMusic();
         }
 
-        function speakSentence() {
-            if (!isPlaying) return;
-            const story = stories[activeStoryIdx];
-            const list = activeLang === 'hi' ? story.sentencesHi : story.sentencesEn;
+        function setWaveVisualizer(active) {
+            const bars = document.querySelectorAll('.wave-bar');
+            bars.forEach(b => b.classList.toggle('playing', active));
+        }
 
-            if (activeSentenceIdx >= list.length) {
-                stopPlay();
+        function renderSentenceWords(sentenceText) {
+            const container = document.getElementById('karaoke-word-container');
+            container.innerHTML = '';
+            const words = sentenceText.trim().split(/\s+/);
+
+            words.forEach((w, idx) => {
+                const span = document.createElement('span');
+                span.className = 'karaoke-word';
+                span.id = `k-word-${idx}`;
+                span.textContent = w + ' ';
+                container.appendChild(span);
+            });
+        }
+
+        function highlightWordIndex(idx) {
+            document.querySelectorAll('.karaoke-word').forEach(sp => sp.classList.remove('word-active'));
+            const activeSpan = document.getElementById(`k-word-${idx}`);
+            if (activeSpan) {
+                activeSpan.classList.add('word-active');
+            }
+        }
+
+        function speakCurrentSentence() {
+            if (!isPlaying) return;
+            const story = storiesData[currentStoryIndex];
+            const sentences = currentLang === 'hi' ? story.sentencesHi : story.sentencesEn;
+
+            if (currentSentenceIndex >= sentences.length) {
+                stopPlayback();
                 launchConfetti();
-                activeSentenceIdx = 0;
-                renderKaraoke();
+                currentSentenceIndex = 0;
                 return;
             }
 
-            renderKaraoke();
-            const text = list[activeSentenceIdx];
+            const rawText = sentences[currentSentenceIndex];
+            renderSentenceWords(rawText);
 
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utt = new SpeechSynthesisUtterance(text);
-                utt.lang = activeLang === 'hi' ? 'hi-IN' : 'en-IN';
-                utt.rate = playbackSpeed;
-                utt.pitch = activeLang === 'hi' ? 1.02 : 1.05;
-                const voice = getVoice(activeLang);
-                if (voice) utt.voice = voice;
+            if (!('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
+            if (wordTimer) clearInterval(wordTimer);
 
-                utt.onend = () => {
-                    if (!isPlaying) return;
-                    speechTimer = setTimeout(() => {
-                        activeSentenceIdx++;
-                        speakSentence();
-                    }, 220);
-                };
-                utt.onerror = () => {
-                    if (!isPlaying) return;
-                    activeSentenceIdx++;
-                    speakSentence();
-                };
-                window.speechSynthesis.speak(utt);
+            const utt = new SpeechSynthesisUtterance(rawText);
+            utt.lang = currentLang === 'hi' ? 'hi-IN' : 'en-IN';
+            utt.rate = playbackSpeed;
+
+            if (currentVoiceGender === 'female') {
+                utt.pitch = 1.08;
+            } else if (currentVoiceGender === 'male') {
+                utt.pitch = 0.85;
+            } else if (currentVoiceGender === 'child') {
+                utt.pitch = 1.45;
+                utt.rate = playbackSpeed * 1.05;
             }
+
+            const voice = getVoiceForGender(currentLang, currentVoiceGender);
+            if (voice) utt.voice = voice;
+
+            const words = rawText.trim().split(/\s+/);
+            let boundaryTriggered = false;
+
+            utt.onboundary = (e) => {
+                if (e.name === 'word') {
+                    boundaryTriggered = true;
+                    let charCount = 0;
+                    for (let i = 0; i < words.length; i++) {
+                        charCount += words[i].length + 1;
+                        if (e.charIndex < charCount) {
+                            highlightWordIndex(i);
+                            break;
+                        }
+                    }
+                }
+            };
+
+            let wordIdx = 0;
+            const approxWordDuration = Math.max(160, Math.floor(60000 / (135 * playbackSpeed)));
+            wordTimer = setInterval(() => {
+                if (!boundaryTriggered && isPlaying && wordIdx < words.length) {
+                    highlightWordIndex(wordIdx);
+                    wordIdx++;
+                }
+            }, approxWordDuration);
+
+            utt.onend = () => {
+                if (wordTimer) clearInterval(wordTimer);
+                highlightWordIndex(words.length - 1);
+                if (!isPlaying) return;
+
+                speechTimer = setTimeout(() => {
+                    currentSentenceIndex++;
+                    speakCurrentSentence();
+                }, 220);
+            };
+
+            utt.onerror = () => {
+                if (wordTimer) clearInterval(wordTimer);
+                if (!isPlaying) return;
+                currentSentenceIndex++;
+                speakCurrentSentence();
+            };
+
+            window.speechSynthesis.speak(utt);
         }
 
         function prevSentence() {
-            if (activeSentenceIdx > 0) {
-                activeSentenceIdx--;
-                renderKaraoke();
-                if (isPlaying) speakSentence();
+            if (currentSentenceIndex > 0) {
+                currentSentenceIndex--;
+                if (isPlaying) speakCurrentSentence();
+                else renderSentenceWords((currentLang === 'hi' ? storiesData[currentStoryIndex].sentencesHi : storiesData[currentStoryIndex].sentencesEn)[currentSentenceIndex]);
             }
         }
 
         function nextSentence() {
-            const story = stories[activeStoryIdx];
-            const list = activeLang === 'hi' ? story.sentencesHi : story.sentencesEn;
-            if (activeSentenceIdx < list.length - 1) {
-                activeSentenceIdx++;
-                renderKaraoke();
-                if (isPlaying) speakSentence();
+            const total = (currentLang === 'hi' ? storiesData[currentStoryIndex].sentencesHi : storiesData[currentStoryIndex].sentencesEn).length;
+            if (currentSentenceIndex < total - 1) {
+                currentSentenceIndex++;
+                if (isPlaying) speakCurrentSentence();
+                else renderSentenceWords((currentLang === 'hi' ? storiesData[currentStoryIndex].sentencesHi : storiesData[currentStoryIndex].sentencesEn)[currentSentenceIndex]);
             }
         }
 
-        function toggleLang() {
-            activeLang = activeLang === 'hi' ? 'en' : 'hi';
-            document.getElementById('btn-lang-toggle').textContent = activeLang === 'hi' ? '🌐 🇮🇳 Hindi (हिन्दी)' : '🌐 🇬🇧 English';
+        function toggleLanguage() {
+            currentLang = currentLang === 'hi' ? 'en' : 'hi';
+            document.getElementById('btn-lang').textContent = currentLang === 'hi' ? '🌐 🇮🇳 Hindi (हिन्दी)' : '🌐 🇬🇧 English';
             const wasPlaying = isPlaying;
-            stopPlay();
-            openStory(activeStoryIdx);
-            if (!wasPlaying) stopPlay();
+            stopPlayback();
+
+            const story = storiesData[currentStoryIndex];
+            document.getElementById('player-title').textContent = currentLang === 'hi' ? story.titleHi : story.titleEn;
+            document.getElementById('player-sub').textContent = currentLang === 'hi' ? story.subHi : story.subEn;
+
+            renderStoryCards(currentCategory);
+            if (wasPlaying) startPlayback();
         }
 
         function cycleSpeed() {
             if (playbackSpeed === 0.92) playbackSpeed = 1.1;
             else if (playbackSpeed === 1.1) playbackSpeed = 0.8;
             else playbackSpeed = 0.92;
-            document.getElementById('btn-speed-toggle').textContent = `⚡ ${playbackSpeed}x`;
-            if (isPlaying) speakSentence();
+            document.getElementById('btn-speed').textContent = `⚡ ${playbackSpeed}x`;
+            if (isPlaying) speakCurrentSentence();
         }
 
         function launchConfetti() {
             const box = document.getElementById('confetti-box');
             const colors = ['#F26522', '#EC4899', '#8B5CF6', '#FDE047', '#10B981', '#3B82F6'];
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 35; i++) {
                 const el = document.createElement('div');
                 el.className = 'confetti-dot';
                 el.style.left = Math.random() * 100 + 'vw';
@@ -925,11 +1167,7 @@
             }
         }
 
-        document.getElementById('story-modal').addEventListener('click', function(e) {
-            if (e.target === this) closeStoryModal();
-        });
-
-        renderStories('all');
+        renderStoryCards('all');
     </script>
 </body>
 </html>
